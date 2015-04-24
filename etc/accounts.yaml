@@ -1,0 +1,50 @@
+mongo:
+  host: localhost
+  db: assets
+
+oracle:
+  user: cando_anyuser
+  password: /u/sf/ytl/net/netmon/lanmon/etc/cando.read
+  host: slac-tcp
+  port: 1521
+  sid: SLAC
+  tns: SLAC
+  
+taylor:
+  path: /afs/slac/g/scs/systems/system.info/
+  files:
+    - taylor.environ
+    - nicinfo
+  
+sccm:
+  user: SLAC\ytl
+  password: /u/sf/ytl/private/windows.password
+  dsn: sccm
+  
+ptolemy:
+  user: ptolemy
+  password: /u/sf/ytl/private/ptolemy.password
+  host: net-graphite01
+  db: ptolemy_production
+
+ptolemy_arp:
+  user: ptolemy
+  password: /u/sf/ytl/private/ptolemy.password
+  host: net-graphite01
+  db: ptolemy_production
+  
+rackwise:
+  user: SLAC\ytl
+  password: /u/sf/ytl/private/windows.password
+  dsn: rackwise
+  
+bis:
+  user: netdb
+  password: /u/sf/ytl/private/netdb.password
+  host: slac-tcp
+  port: 1521
+  sid: SLAC
+  tns: SLAC
+
+netdb:
+  yaml: /afs/slac/g/scs/net/netdb/node.yaml

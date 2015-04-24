@@ -1,0 +1,91 @@
+
+# by_serial: {
+#     'start_db': 'rackwise',
+#     'tactics': [
+#         ( 'bis', [ 'serial' ] ),
+#         ( 'bis', [ 'PC' ] ),
+#         ( 'sccm', [ 'serial' ] ),
+#         ( 'taylor', [ 'serial' ] ),
+#         ( 'sccm', [ 'nodename' ] ),
+#         ( 'taylor', [ 'nodename' ] ),
+#     ],
+# },
+
+by_rackwise:
+  start_db: rackwise
+  tactics:
+    - db: bis
+      fields:
+        - serial
+    - db: bis
+      fields:
+        - PC
+    - db: sccm
+      fields:
+        - serial
+    - db: taylor
+      fields:
+        - serial
+    - db: sccsm
+      fields:
+        - nodename
+    - db: taylor
+      fields:
+        - nodename
+      
+      
+# 'by_mac_address': {
+#     'start_db': 'ptolemy_arp',
+#     'tactics': [
+#         # try to find the mac address for the found ip address using ptolemy
+#         # then fill in the rest based from the mac address
+#         ( 'sccm', [ 'port', 'mac_address' ], True ),
+#         ( 'taylor', [ 'port', 'mac_address' ] ),
+#         ( 'dhcp', [ 'port', 'mac_address' ] ),
+#         # ( 'sccm', [ 'port', 'ip_address' ], True ),
+#         # ( 'taylor', [ 'port', 'ip_address' ] ),
+#         # ( 'cando', [ 'port', 'ip_address' ], False, { 'is_vm:value': { True: ( 'nodename', 'os', 'manufacturer', 'model', 'PC', 'PO', 'port' ) } } ), # no recent, ignore vm's
+#         ( 'cando', [ 'port', 'ip_address' ], False, { 'is_vm:value': { True: ( 'nodename', 'os', 'manufacturer', 'model', 'PC', 'PO' ) } } ), # no recent, ignore vm's
+#         ( 'ptolemy_device', [ 'nodename' ] ),
+#         ( 'bis', [ 'serial' ] ),
+#         ( 'bis', [ 'PC' ] ),
+#         ( 'dhcp', [ 'PC', ] ),
+#         ( 'rackwise', [ 'serial', ] ),
+#         ( 'rackwise', [ 'PC', ] ),
+#     ],
+# },
+
+by_mac_address:
+  start_db: 'ptolemy_arp',
+  tactics:
+    # try to find the mac address for the found ip address using ptolemy
+    # then fill in the rest based from the mac address
+    - db: sccm
+      fields: 
+        - port
+        - mac_address
+      time: True
+    - db: taylor
+      fields:
+        - port
+        - mac_address
+    - db: netdb
+      fields:
+        - port
+        - ip_address
+    - db: ptolemy_device
+      fields:
+        - nodename
+    - db: bis
+      fields:
+        - serial
+    - db: bis
+      fields:
+        - PC
+    - db: rackwise
+      fields:
+        - serial
+    - db: rackwise
+      fields:
+        - PC
+      
