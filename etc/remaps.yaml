@@ -1,0 +1,721 @@
+model:
+    
+    SUNFIRE V210: V210
+    SUNFIRE V240: V240
+    SUNFIRE V245: V245
+    
+    X2200 M2 WITH QUAD CORE PROCESSOR: X2200
+    X2200 M2 WITH DUAL CORE PROCESSOR: X2200
+    X2200 M2: X2200
+    SUNFIRE X2200: X2200
+    SUNFIRE X2270: X2270
+    SUNFIRE X2270 M2: X2270
+    X2270 M2: X2270
+    FIRE X2270: X2270
+
+    X4100 SERVER: X4100
+    X4100 M2: X4100
+    SUNFIRE X4100: X4100
+    SUNFIRE X4140: X4140
+    SUNFIRE 4150: X4150
+    SUNFIRE X4150: X4150
+    SUNFIRE X4170: X4170
+    SUNFIRE X4540: X4540
+
+    X4170 SERVER: X4170
+    SUNFIRE X4200: X4200
+    X4200 SERVER: X4200
+    X4200 M2: X4200
+
+    SUNFIRE X4240: X4240
+
+    SUNFIRE X4250: X4250
+    SUNFIRE X4270: X4270
+    SUNFIRE X4275: X4275
+    X4270 M2: X4270
+    X4270 SERVER: X4270
+    X4275 SERVER: X4275
+
+    SUNFIRE V20Z: V20z
+    V20Z: V20z
+
+    PROLIANT DL360: ProLiant DL360
+    DL380 G6 - LFF: ProLiant DL380 G6
+    PROLIANT DL380: ProLiant DL380 G6
+    PROLIANT DL380 G5: ProLiant DL380 G5
+    PROLIANT DL380 G6: ProLiant DL380 G6
+    PROLIANT DL380G6: ProLiant DL380 G6
+    PROLIANT DL380 G: ProLiant DL380 G6
+    
+    PROLIANT-SL2X170: ProLiant SL2x170z G6
+    PROLIANT SL2X170: ProLiant SL2x170z G6
+    PROLIANT SL2X170 G6: ProLiant SL2x170z G6
+    PROLIANT SL6000: ProLiant SL2x170z G6
+    SL2X170Z G6: ProLiant SL2x170z G6
+
+    POWEREDGE 1550: PowerEdge 1550
+    POWEREDGE 1650: PowerEdge 1650
+    POWEREDGE 1750: PowerEdge 1750
+    1850: PowerEdge 1850
+    1950: PowerEdge 1950
+    POWEREDGE 1850: PowerEdge 1850
+    POWEREDGE 1950: PowerEdge 1950
+    POWEREDGE 1950 III: PowerEdge 1950
+    POWEREDGE 2650: PowerEdge 2650
+    POWEREDGE 2650 (OPEN VIEW): PowerEdge 2650
+    POWEREDGE 2850: PowerEdge 2850
+    POWEREDGE 2950: PowerEdge 2950
+    POWEREDGE 2950-III: PowerEdge 2950
+    2950: PowerEdge 2950
+    POWEREDGE R200: PowerEdge R200
+    R210: PowerEdge R210
+    POWEREDGE R310: PowerEdge R310
+    POWEREDGE R410 - CLOSED VIEW: PowerEdge R410
+    POWEREDGE R410 - LFF: PowerEdge R410
+    POWEREDGE R420: PowerEdge R420
+    POWEREDGE R510-8: PowerEdge R510
+    POWEREDGE R520: PowerEdge R520
+    POWEREDGE R410: PowerEdge R410
+    R510: PowerEdge R510
+    POWEREDGE R510-12: PowerEdge R510
+    # PowerEdge R515-12:
+    POWEREDGE R510-4: PowerEdge R510
+    POWEREDGE R510: PowerEdge R510
+    POWEREDGE R515-12: PowerEdge R515
+    R610: PowerEdge R610
+    POWEREDGE R610: PowerEdge R610
+    POWEREDGE T610: PowerEdge T610
+    POWEREDGE T610 - RACKMOUNT: PowerEdge T610
+    R620: PowerEdge R620
+    POWEREDGE R620 10-SFF: PowerEdge R620
+    R710: PowerEdge R710
+    POWEREDGE R710: PowerEdge R710
+    POWEREDGE R715: PowerEdge R715
+    POWEREDGE R720: PowerEdge R720
+    POWEREDGE R720 - LFF: PowerEdge R720
+    POWEREDGE R720 - SFF: PowerEdge R720
+    POWEREDGE R720XD: PowerEdge R720xd
+    POWEREDGE R720XD - LFF: PowerEdge R720xd
+    POWEREDGE R720XD - SFF: PowerEdge R720xd
+    POWEREDGE R810: PowerEdge R810
+    POWEREDGE R820: PowerEdge R820
+    POWEREDGE R900: PowerEdge R900
+    R910: PowerEdge R910
+    POWEREDGE R620 8-SFF: PowerEdge R620
+    POWEREDGE R620: PowerEdge R620
+    POWEREDGE M620: PowerEdge M620
+    POWEREDGE M620: PowerEdge M620
+    M620: PowerEdge M620
+    POWEREDGE R910: PowerEdge R910
+
+    POWEREDGE C6100: PowerEdge C6100
+    C6100: PowerEdge C6100
+    POWEREDGE C6100 - LFF: PowerEdge C6100
+    POWEREDGE C6100 - SFF: PowerEdge C6100
+
+    PRECISION WORKSTATION 340: Precision 340, 
+    PRECISION 360: Precision 360
+    PRECISION 360N: Precision 360
+    PRECISION WORKSTATION 360: Precision 360, 
+    PRECISION 370: Precision 370
+    PRECISION 370N: Precision 370
+    PRECISION WORKSTATION 370: Precision 370
+    PRECISION WORKSTATION 380: Precision 380, 
+    PRECISION 380: Precision 380, 
+    PRECISION 380N: Precision 380, 
+    PRECISION 390: Precision 390, 
+    PRECISION 390N: Precision 390, 
+    PRECISION 410: Precision 410, 
+    PRECISION 410 MT: Precision 410, 
+    PRECISION 420: Precision 420, 
+    PRECISION 470: Precision 470, 
+    PRECISION WORKSTATION 390: Precision 390, 
+    PRECISION WORKSTATION 490: Precision 490
+    PRECISION 490: Precision 490
+    PRECISION 490N: Precision 490, 
+    PRECISION WORKSTATION 650: Precision 650, 
+    PRECISION 520: Precision 520
+    PRECISION 530 MT: Precision 530
+    PRECISION 610: Precision 610, 
+    PRECISION 620: Precision 620, 
+    PRECISION 650: Precision 650, 
+    PRECISION 650N: Precision 650, 
+    PRECISION 670N: Precision 670, 
+    PRECISION 690N: Precision 690, 
+    PRECISION 690: Precision 690, 
+
+    PRECISION T1700: Precision T1700
+    PRECISION 3400: Precision T3400
+    PRECISION T3400: Precision T3400
+    PRECISION T3400N: Precision T3400
+    PRECISION WORKSTATION T3400: Precision T3400, 
+
+    PRECISION T3500: Precision T3500
+    PRECISION T3500N: Precision T3500
+    PRECISION T3520N: Precision T3520
+    PRECISION WORKSTATION T3500: Precision T3500, 
+
+    PRECISION T3600: Precision T3600
+    PRECISION T3600N: Precision T3600
+    PRECISION T3610: Precision T3610
+    PRECISION T3610N: Precision T3610
+
+    PRECISION M2400: Precision M2400
+
+    DELL PRECISION M3800: Precision M3800
+    PRECISION M3800: Precision M3800
+    
+    PRECISION M4400: Precision M4400
+    PRECISION M4500: Precision M4500
+    PRECISION M4600: Precision M4600
+    PRECISION M4700: Precision M4700
+    PRECISION M4800: Precision M4800
+    
+    PRECISION T5400: Precision T5400
+    PRECISION T5400N: Precision T5400
+    PRECISION WORKSTATION T5400: Precision T5400
+     
+    PRECISION T5500: Precision T5500
+    PRECISION T5500E: Precision T5500
+    PRECISION T5500N: Precision T5500
+    PRECISION WORKSTATION T5500: Precision T5500, 
+    PRECISION T5600: Precision T5600
+    
+    PRECISION M90: Precision M90
+
+    PRECISION M6400: Precision M6400
+    PRECISION M6500: Precision M6500
+    PRECISION M6600: Precision M6600
+    
+    PRECISION 670: Precision 670
+    PRECISION 670N: Precision 670
+    PRECISION WORKSTATION 670: Precision 670
+    PRECISION WORKSTATION 690: Precision 690
+    PRECISION 690N: Precision 690
+    
+    PRECISION T7400: Precision T7400
+    PRECISION T7400N: Precision T7400
+    PRECISION WORKSTATION T7400: Precision T7400
+    PRECISION T7500: Precision T7500
+    PRECISION WORKSTATION T7500: Precision T7500
+    PRECISION T7500N: Precision T7500
+    PRECISION T7600: Precision T7600
+    PRECISION T7600N: Precision T7600
+    PRECISION T7610: Precision T7610
+    
+    OPTIPLEX 380: OptiPlex 380
+    OPTIPLEX 390: OptiPlex 390
+
+    OPTIPLEX 740: OptiPlex 740
+
+    OPTIPLEX 745: OptiPlex 745
+    OPTIPLEX 755: OptiPlex 755
+    
+    OPTIPLEX 760: OptiPlex 760
+    OPTIPLEX 760 SFF: OptiPlex 760
+    OPTIPLEX 780: OptiPlex 780
+    OPTIPLEX 960: OptiPlex 960
+    OPTIPLEX 960MT: OptiPlex 960
+    OPTIPLEX 980: OptiPlex 980
+    OPTIPLEX 990: OptiPlex 990
+    OPTIPLEX 990MT: OptiPlex 990
+    OPTIPLEX 990DT: OptiPlex 990
+    OPTIPLEX 9020: OptiPlex 9020
+
+    OPTIPLEX 9010 USFF: OptiPlex 9010
+    OPTIPLEX 9010: OptiPlex 9010
+
+    GX150: OptiPlex GX150
+    OPTIPLEX GX150: OptiPlex GX150
+    OPTIPLEX GX240: OptiPlex GX240
+    GX260: OptiPlex GX260
+    OPTIPLEX GX260: OptiPlex GX260
+    OPTIPLEX GX260T: OptiPlex GX260
+
+    GX270: OptiPlex GX270
+    OPTIPLEX GX270: OptiPlex GX270
+    OPTIPLEX GX270 MT: OptiPlex GX270
+    OPTIPLEX GX270T: OptiPlex GX270
+    GX280: OptiPlex GX280
+    GX300: OptiPlex GX300
+    GX400: OptiPlex GX400
+    OPTIPLEX GX400: OptiPlex GX400
+    GX520: OptiPlex GX520
+    GX620: OptiPlex GX620
+
+    OPTIPLEX GX280: OptiPlex GX280
+    OPTIPLEX SX280: OptiPlex SX280
+    OPTIPLEX GX520: OptiPlex GX520
+    OPTIPLEX GX620: OptiPlex GX620
+    GX745: OptiPlex GX745
+    GX755: OptiPlex GX755
+
+    OPTIPLEX 745: OptiPlex GX745
+    OPTIPLEX GX745: OptiPlex GX745
+    OPTIPLEX 3020: OptiPlex 3020
+    OPTIPLEX 7010: OptiPlex 7010
+    OPTIPLEX 9010: OptiPlex 9010
+    OPTIPLEX 9010 USFF: OptiPlex 9010
+    OPTIPLEX 9020: OptiPlex 9020
+    
+    C800 LATITUDE: Latitude C800
+    
+    LATITUDE D620: Latitude D620
+    LATITUDE D630: Latitude D630
+    LATITUDE D430: Latitude D430
+    LATITUDE D800: Latitude D800
+    LATITUDE D820: Latitude D820
+    LATITUDE D810: Latitude D810
+    LATITUDE D830: Latitude D830
+    
+    LATITUDE E4200: Latitude E4200
+    LATITUDE E4310: Latitude E4310
+
+    LATITUDE E6230: Latitude E6230
+    LATITUDE E6320: Latitude E6320
+    LATITUDE E6330: Latitude E6330
+    LATITUDE E6430S: Latitude E6430
+    LATITUDE E6510: Latitude E6510
+    LATITUDE E6530: Latitude E6530
+    LATITUDE E6540: Latitude E6540
+    
+    LATITUDE E7240: Latitude E7240
+    E7240-i7: Latitude E7240
+    XT3: Latitude XT3
+    
+    LATITUDE E4300: Latitude E4300
+    LATITUDE E5400: Latitude E5400
+    LATITUDE E5500: Latitude E5500
+
+    LATITUDE E6400: Latitude E6400
+    LATITUDE E6410: Latitude E6410
+    LATITUDE E6420: Latitude E6420
+    LATITUDE E6420 ATG: Latitude E6420
+    LATITUDE E6430: Latitude E6430
+    CBX3___: Latitude E6430
+    LATITUDE E6440: Latitude E6440
+    LATITUDE 6400ATG: Latitude E6400
+    LATITUDE E6500: Latitude E6500
+    LATITUDE E6520: Latitude E6520
+    LATITUDE E7440: Latitude E7440
+    
+    INSPIRON XPS-13: XPS L321X
+    DELL SYSTEM XPS L321X: XPS L321X
+    DIMENSION XPS 13: XPS L321X
+    DIMENSION XPS-13: XPS L321X
+    DIMENSION XPS L321X: XPS L321X
+    XPSPRO: XPS L321X
+    XPS13 9333: XPS L322X
+
+    DELL SYSTEM XPS L322X: XPS L322X
+    ULTRABOOK XPS-13: XPS L322X
+    ULTRABOOK XPSL322X-13: XPS L322X
+    XPS13: XPS L322X
+    XPS L322X: XPS L322X
+    XPS L421X: XPS L421X
+            
+    DIMENSION XPS-14: XPS L421X
+    ULTRABOOK XPS-12: XPS 12 9Q23
+    XPS 12 9Q23: XPS 12 9Q23
+    XPS-15: XPS L521X
+    XPS 15: XPS L521X
+    DIMENSION XPS 15: XPS L521X
+    XPS 15 9530: XPS L521X
+    
+    SURFACE WITH WINDOWS 8 PRO: Surface
+    SURFACE PRO125GB: Surface
+    SURFACE PRO 125GB: Surface
+    SURFACE: Surface
+    SURFACE PRO3: Surface Pro 3
+    SURFACE PRO 3: Surface Pro 3
+    
+    MACBOOKAIR5,2: Macbook Air 13"
+    MACBOOK AIR 13: Macbook Air 13"
+    MACBOOK AIR 13": Macbook Air 13"
+    MACBOOKAIR4,2: Macbook Air 13"
+    MACBOOK AIR: Macbook Air
+    MACBOOK AIR 11"": Macbook Air 11"
+    MACBOOK PRO 13": Macbook Pro 13"
+    MACBOOKPRO9,2: Macbook Pro 13"
+    MACBOOK PRO 15: Macbook Pro 15"
+    MACBOOK PRO15": Macbook Pro 15"
+    MACBOOK PRO 15": Macbook Pro 15"
+    MACBOOKPRO6,2: Macbook Pro 15"
+    MACBOOKPRO10,2: Macbook Pro
+    MACBOOKPRO5,3: Macbook Pro
+    MACBOOK PRO: Macbook Pro
+    MACBOOK PRO 13.3": Macbook Pro 13"
+    MACBOOK PRO13: Macbook Pro 13"
+    MACBOOK PRO13": Macbook Pro 13"
+    MACBOOK PRO 17": Macbook Pro 17"
+    IMAC11,3: iMac 27"
+    IMAC 20": iMac 21"
+    IMAC 21": iMac 21"
+    IMAC 21.5": iMac 21"
+    IMAC 24": iMac 24"
+    IMAC 27": iMac 27"
+    MAC PRO: Mac Pro
+    MAC PRO CTO: Mac Pro
+    MAC PRO XE5: Mac Pro
+    A1186 MAC PRO: Mac Pro
+    
+    MAC II: Mac II
+    MAC G3: Mac G3
+    MAC G4: Mac G4
+    MAC G5: Mac G5
+
+    MACMINI4,1: Mac Mini
+    MAC MINI: Mac Mini
+    
+    NEW IPAD AIR 16GB: iPAd Air
+            
+    VENUE 8 PRO 5830: Venue 8 Pro
+    VENUE 8 PRO: Venue 8 Pro
+    VENUE: Venue 11 Pro 5130
+    
+    ASPIRE: Aspire
+    
+    THINKPAD W520: Thinkpad W520
+    4270CTO: Thinkpad W520
+    2306CTO: Thinkpad 2360 CTO
+    THINKPAD 2360 CTO: Thinkpad 2360 CTO
+    THINKPAD 2306 CTO: Thinkpad 2360 CTO
+    23539WU: Thinkpad T430S
+    THINKPAD T430S: Thinkpad T430S
+
+    33472YU: Thinkpad Twist
+    THINKPAD TWIST: Thinkpad Twist
+    20A7CTO1WW: Thinkpad X1 Carbon
+    20A70037US: Thinkpad X1 Carbon
+    3444F8U: Thinkpad X1 Carbon
+    THINKPAD X1 CARBON: Thinkpad X1 Carbon
+    367927U: Thinkpad Tablet 2
+    THINKPAD TABLET 2 : Thinkpad Tablet 2
+    THINKPAD TABLET 2: Thinkpad Tablet 2
+    
+    KJ379AA-ABA A6400F: Pavilion 6400F
+    A6400F PAVILION: Pavilion 6400F
+    
+    HP COMPAQ NX6325 (EN191UA#ABA): NX6325
+    NX6325: NX6325
+     
+    ASA 5220-AIP40-K9: ASA5520
+    ASA 5520: ASA5520
+    
+    AM1640: Aspire M1640
+    BIG IP: BIG-IP LTM 1600
+    BIGIP LTM 1600: BIG-IP LTM 1600
+    BIG-IP 1600: BIG-IP LTM 1600
+    
+    CATALYST 6509-NEB-A: WS-C6509-NEB-A
+    WS-C6509-NEB-A: WS-C6509-NEB-A
+    WS-C6509-NEBA-A: WS-C6509-NEB-A
+    CATALYST 6509: WS-C6509
+    CATALYST 6509-E: WS-C6509
+    WS-C6509: WS-C6509
+    
+    CXT-8000: CXT8000
+    N1912A: N1912A
+    
+    SILKWORM 4900: SilkWorm 4900
+    SW4900: SilkWorm 4900
+    
+    SERVMAX TESLA GPU HPC: H8QG6
+    STORAGETEK SL8500: Storagetek SL8500
+    SL8500: Storagetek SL8500
+    
+    
+    STOREDGE 3511: StorEdge 3511
+    3511 FC: StorEdge 3511
+    
+    T3: StorEdge T3
+    STOREDGE T3: StorEdge T3
+    6120: StorEdge 6120
+    STOREDGE 6120: StorEdge 6120
+    T4: StorEdge 6120
+    STOREDGE T4: StorEdge 6120
+
+    ENTERPRISE T5120: Enterprise T5120
+    T5120: Enterprise T5120
+    ENTERPRISE T5140: Enterprise T5140
+    T5140: Enterprise T5140
+    SPARC STATION T5240: Sparc Station T5240
+    T5240: Sparc Station T5240
+    STOREDGE 6140: StorEdge 6140
+
+    BROCADE 5100: 5100
+    
+    
+    
+    DESIGNJET4000: DESIGNJET 4000
+    
+    SYS-6016T-NTRF: 6016GT-TF-TM2
+    SYS-6016GT-TF-FM205: X8DTG-D
+    
+    # CAT 2900XL: Catalyst 2900XL
+    # CAT 2924XL: Catalyst 2924XL
+    # CAT 2950: Catalyst 2950
+    # CAT 2960 24: Catalyst 2960-24
+    # CAT 2960 48: Catalyst 2960-48
+    # CAT 2960 8: Catalyst 2960-8
+    # CAT 3524XL: Catalyst 3524XL
+    # CAT 3548XL: Catalyst 3548XL
+    # CAT 3550 24: Catalyst 3550-24
+    # CAT 3550 48: Catalyst 3550-48
+    # CAT 3560 24: Catalyst 3560-24
+    # CAT 3560 48: Catalyst 3560-48
+    # CAT 3560G 24: Catalyst 3560G-24
+    # CAT 3560G 48: Catalyst 3560G-48
+    # CAT 3750 24: Catalyst 3750-24TS-1U
+    # CAT 3750 48: Catalyst 3750-48TS
+    # CAT 3750E 24PS: Catalyst 3750E-24PS
+    # CAT 3750G 12S: Catalyst 3750G-12S
+    # CAT 3750G 24: Catalyst 3750G-24
+    # CAT 3750V2 24P: Catalyst 3750V2-24P
+    # CAT 3750X 24P: Catalyst 3750X-24P
+    # CAT 3750X 48 P: Catalyst 3750X-48P
+    # CAT 3750X 48 T: Catalyst 3750X-48T
+    # CAT 4006: Catalyst 4006
+    # CAT 6000 MSFC3: Catalyst 6000
+    # CAT 6506: Catalyst 6506
+    # CAT 6509: Catalyst 6509
+    7200: 7206VXR
+    N1912a: N1912A
+
+    StorEdge T4: StorEdge 6120
+
+    FT72 B7015: FT72-B7015
+    X8DTG D: X8DTG-D
+    SYS-5015A-PHF: X9SCD
+    SYS-6016XT-TF: X8DTG-D
+    SYS-6016T-6RTF+: X8DTU 6+
+    6025W-URB-2U: X7DWU
+    VIRTUAL MACHINE: Virtual Machine
+    
+    732-5: SYS-5038A-IL
+    
+    BA30A-AA: Ba30a-aa
+    BA30P-AA: Ba30a-aa
+    
+    NETRA T1: Netra T1
+    7148SX: DCS-7148SX
+
+manufacturer:
+    SUN MICROSYSTEMS: Sun Microsystems
+    SUN / ORACLE: Sun Microsystems
+    SUN: Sun Microsystems
+    SUN MICROSYSTEMS, INC: Sun Microsystems
+    CISCO: Cisco Systems
+    CISCO SYSTEMS: Cisco Systems
+    # AMERICAN MEGATRENDS INC.: Sun Microsystems
+    PHOENIX TECHNOLOGIES LTD.: Sun Microsystems
+    DELL COMPUTER CORPORATION: Dell
+    DELL COMPUTER CORP: Dell
+    DELL INC: Dell
+    DELL INC.: Dell
+    DELLINC.: Dell
+    DELL__: Dell
+    DELL: Dell
+    F5: F5 Networks
+    HEWLETT PACKARD CO: HP
+    HEWLETT-PACKARD: HP
+    HP/COMPAQ: HP
+    HP-PAVILION: HP
+    APPLE: Apple
+    APPLE INC.: Apple
+    APPLE COMPUTER CO: Apple
+    HONEYWELL: Honeywell
+    DIGI INTERNATIONAL: Digi
+    LENOVO: Lenovo
+    International Business Mach: IBM
+    AMAX: Supermicro
+    SUPERMICRO: Supermicro
+    SUPER MICRO COMPUTER: Supermicro
+    BROCADE COMMUNICATIONS: Brocade
+    BROCADE: Brocade
+    CANON: Canon
+    MOTOROLA: Motorola
+    ACER: Acer
+    ARISTA: Arista
+    AVOCENT: Avocent
+    MICROSOFT: Microsoft Corporation
+    DIGI: Digi
+    COLDFIRE: Coldfire
+    SLAC: SLAC
+    XEROX: Xerox Corporation
+    XEROX CORP: Xerox Corporation
+    ALLEN BRADLEY: Allen Bradley
+    AXIS: Axis
+    AGILENT TECHNOLOGIES: Agilent Technologies
+    AGILENT: Agilent Technologies
+    AMERICAN POWER CONVERSION,APC: APC
+    NEWPORT: Newport
+    SONY CORP: Sony Corporation
+    COMPAQ COMPUTER CORP: Compaq Computer Corporation
+    DIGITAL EQMT CO: Digital Equipment Corporation
+    DEC: Digital Equipment Corporation
+    LAWRENCE LIVERMORE RAD LAB: LBNL
+    KONICA: Konica Minolta
+    VMWARE: VMware, Inc.
+    RACKABLE: Rackable Systems
+    NETAPP: NetApp
+    TYAN: Tyan
+    EPSON: Epson
+    LACIE: Lacie
+    NATIONAL INSTRUMENTS: National Instruments
+    NAT: National Instruments
+    TEKTRONIX: Tektronix, Inc
+    VA LINUX: VA Linux
+    VADATECH: VadaTech
+    KIP AMERICA: KIP
+    PALO ALTO NETWORKS: Palo Alto Networks
+
+device_type:
+    
+    UNIX-SRVR: unix server
+    LINUX SRVR: linux server
+
+    WIN-SRVR: windows server
+    
+    FILE-SRVR: storage server
+    RAID: storage
+    SAN: storage
+    TAPE-LIB: storage
+    STORAGE SYSTEM: storage
+    
+    SERVER BLADE: server
+    VAX: server
+    MAC-SRVR: server
+    VMS-SRVR: server
+    SERVER: server
+    
+    VM-SERVER: server
+    VIRT-NET: server
+
+    SWITCH-HUB: switch
+    SWITCH: switch
+    ROUTER: router
+    FIREWALL: router
+    SAN-SWITCH: switch
+
+    AV: camera
+    CAMERA: camera
+    WEBCAM: camera
+    
+    PRINTER: printer
+    SCANNER: printer
+
+    LAPTOP: laptop
+
+    PC: computer
+    LINUX-WKS: computer
+    MICROCOMPUTER: computer
+    MAC: computer
+    ALC: computer
+
+    ATTOCUBE: computer
+    AXP-SERVE: computer
+    AXP-WKS: computer
+    BECKHOFF: computer
+    DEC-WKS: computer
+    ETHERMETER: computer
+    HP-WKS: computer
+
+    HVAC: computer
+    IDS/IPS: router
+    LAN-MISC: computer
+
+    O-SCOPE: computer # instrument
+
+    PC-MISC: computer
+    POE INJHUB: computer
+    SIGNAL GEN: computer
+    SITE-CTRL: computer
+    SPEC ANLYZ: computer
+    
+    VAX-WKS: computer
+    
+    COMM-SRVR: computer
+    
+    XTERM: computer
+    SUNRAY: computer
+    SUN-WKS: computer
+
+    TERM-SRVR: computer
+    TEST-EQUIP: computer
+    TOUCH PNL: computer
+    USB-SERVER: computer
+    VAS-WKS: computer
+
+    PLC: computer
+    PDU: power
+    PWR-EQUIP: power
+    UPS: power
+    
+    IOC: controller
+    VME: controller
+    VME CRATE: controller
+    CPU-CARD: controller
+    DAQ-INST: controller
+    MCH: controller
+    MKSU: controller
+    BPM RCVR: controller
+    CAMAC: controller
+    CONTROLLER: controller
+    TEMP-CTRL: controller
+
+    EPSC: computer
+    
+    ATTOCUBE: computer
+    W-MISC: computer
+
+owner:
+    SSRL SMB RESEARCH AND USER: SSRL
+    SLAC/SSRL: SSRL
+
+os:name:
+  
+    WINDOWS: Microsoft Windows
+    WINDOWS: Microsoft Windows, 
+    WINDOWS-2000: Microsoft Windows
+    WINDOWS-2003: Microsoft Windows
+    WINDOWS-2008: Microsoft Windows
+    WINDOWS-2008-R2: Microsoft Windows
+    WINDOWS-2012: Microsoft Windows
+    WINDOWS 7: Microsoft Windows
+    WINDOWS-7: Microsoft Windows
+    WINDOWS-NT: Microsoft Windows
+    WINDOWS-VISTA: Microsoft Windows
+    WINDOWS-XP: Microsoft Windows
+    WINDOWS-XP-SP2: Microsoft Windows
+    MICROSOFT WINDOWS 7 ENTERPRISE: Microsoft Windows
+    MICROSOFT WINDOWS 7 ENTERPRISE: Microsoft Windows
+    MICROSOFT WINDOWS 7 PROFESSIONAL: Microsoft Windows
+    MICROSOFT WINDOWS 8 ENTERPRISE: Microsoft Windows
+    MICROSOFT WINDOWS 8.1 ENTERPRISE: Microsoft Windows
+    MICROSOFT WINDOWS 8.1 PRO: Microsoft Windows
+    MICROSOFT WINDOWS SERVER 2008 R2 DATACENTER: Microsoft Windows
+    MICROSOFT WINDOWS SERVER 2008 R2 ENTERPRISE: Microsoft Windows
+    MICROSOFT WINDOWS SERVER 2008 R2 STANDARD: Microsoft Windows
+    MICROSOFT WINDOWS SERVER 2012 DATACENTER: Microsoft Windows
+    MICROSOFT WINDOWS SERVER 2012 R2 STANDARD: Microsoft Windows
+    MICROSOFT WINDOWS SERVER 2012 STANDARD: Microsoft Windows
+    MICROSOFT WINDOWS XP PROFESSIONAL: Microsoft Windows
+    MICROSOFT(R) WINDOWS(R) SERVER 2003 STANDARD X64 EDITION: Microsoft Windows
+    MICROSOFT(R) WINDOWS(R) SERVER 2003, STANDARD EDITION: Microsoft Windows
+    MICROSOFT(R) WINDOWS(R) XP PROFESSIONAL X64 EDITION: Microsoft Windows
+    MICROSOFT® WINDOWS SERVER® 2008 ENTERPRISE: Microsoft Windows
+    MICROSOFT® WINDOWS VISTA™ BUSINESS: Microsoft Windows
+    
+    HP-JETDIRECT: builtin
+    PROPRIETARY: builtin
+    XEROX-PRINTER: builtin
+    RHEL: Redhat Enterprise Linux
+    LINUX: Redhat Enterprise Linux
+    SUN: Solaris
+    SOLARIS: Solaris
+    CISCO-IOS: Cisco IOS
+    GOLDFIRE: Goldfire
+    MACOSX: Apple Mac OSX
+    MACOS: Apple Mac OS
+    VMWARE-ESXI: VMWare ESXI
