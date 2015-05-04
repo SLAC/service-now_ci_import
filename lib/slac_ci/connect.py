@@ -29,6 +29,7 @@ import logging
 
 from util import mac_address, parse_number
 
+import subprocess
 
 
 def rows_to_dict_list(cursor):
@@ -298,7 +299,10 @@ def taylor_data( path='/afs/slac/g/scs/systems/system.info/', files=('taylor.env
         # ppa-pc74907-l
         elif out['serial'] == 'CH70P71':
             out['serial'] = '85LNXC1'
-        
+        elif out['serial'] == '.. ..':
+            del out['serial']
+        elif out['serial'] == 'Not Available':
+            del out['serial']
             
             
         # determine if vm etc
@@ -319,8 +323,11 @@ def taylor_data( path='/afs/slac/g/scs/systems/system.info/', files=('taylor.env
                 out['manufacturer'] = 'RedHat'
                 out['manufacturer'] = 'oVirt'
                 out['is_vm'] = True
+            elif out['model'] == 'OpenStack Nova':
+                out['is_vm'] = True
+                
             # remove
-            elif out['model'] in ( '..', ):
+            elif out['model'] in ( '..', 'System Configuration: Not Available        Not Available' ):
                 del out['model']
             
             for i in ( 'ASUS', ):
@@ -402,10 +409,15 @@ def taylor_data( path='/afs/slac/g/scs/systems/system.info/', files=('taylor.env
             if 'mac_address' in items and items['mac_address'] in ( '00:00:00:00:00:00', ):
                 continue
             items['interface'] = interface
-            o['port'].append( items )
-            
-        yield o
-        # for y in o['port']:
+            o['port'] = items
+            if '_id' in o:
+                del o['_id']
+            yield o
+        #     yield
+        #     .append( items )
+        #
+        # # yield o
+        # for y in out['port']:
         #     if '_id' in o:
         #         del o['_id']
         #     o['port'] = y
@@ -476,7 +488,7 @@ def rackwise_data( cursor ):
         if d['serial'] in ( 'UNKNOWN', ):
             d['serial'] = None
         elif 'serial' in d and d['serial']:
-            d['serial'] = d['serial'].upper()
+            d['serial'] = d['serial'].upper().replace("\"", '')
 
         # cost
         d['capital_cost'] = float(d['capital_cost']) if d['capital_cost'] else None
@@ -504,6 +516,9 @@ def rackwise_data( cursor ):
         if d['ru']:
             d['location']['ru'] = '%s'%d['ru']
             del d['ru']
+
+        if 'building' in d['location']:
+            d['location']['building'] = 'B'+d['location']['building']
 
         d['warranty'] = {}
         if d['warranty_start']:
@@ -720,7 +735,7 @@ def sccm_data( cursor, users_by_username={}, users_by_name={}, dhcp_table={} ):
             del r['full_name']
             del r['username']
             
-        if r['manufacturer'] in ( 'System manufacturer', 'To be filled by O.E.M.', ):
+        if r['manufacturer'] in ( 'System manufacturer', 'To be filled by O.E.M.', 'To Be Filled By O.E.M.' ):
             del r['manufacturer']
             
         if r['model'] in ( 'System Product Name', 'To be filled by O.E.M.', ):
@@ -869,9 +884,13 @@ def bis_data( cursor, users={} ):
         # logging.error("%s" % d['location'] )
         try:
             b,r = d['location'].strip().replace(' ','').split('_')
-            d['location'] = { 'building': b, 'room': r }
+            d['location'] = { 'building': 'B'+b, 'room': r }
         except:
-            d['location'] = { 'building': d['location'].strip() }
+            if d['location'] in (  'OSU', 'OSU' ):
+                d['location'] = 'Off campus'
+            else:
+                d['location'] = 'B'+d['location'].strip()
+            d['location'] = { 'building': d['location'] }
 
         yield d
 
@@ -903,7 +922,7 @@ def ptolemy_arp_data( cursor, dhcp_table={} ):
             del d['ip_address']
            
         if 'ip_address' in d:
-            if d['ip_address'] in dhcp_table or d['ip_address'].startswith( '198.129' ):
+            if d['ip_address'] in dhcp_table or d['ip_address'].startswith( '198.129' ) or d['ip_address'].startswith( '134.79.84' ):
                 d['dhcp_ip_address'] = d['ip_address']
                 del d['ip_address']
             elif d['ip_address'].startswith( '192.168' ):
@@ -967,8 +986,13 @@ def ptolemy_entity_data( cursor, dhcp_table={} ):
         if len(v) == 1:
             yield v
             
-def netdb_yaml_data( yaml=None, **kwargs ):
+def netdb_yaml_data( update_bin=None, yaml=None, users_by_username={}, **kwargs ):
     docs = {}
+
+    # hack!
+    if update_bin:
+        subprocess.call( [ update_bin, ] )
+
     with open( yaml, 'r' ) as f:
         docs = load(f, Loader=Loader)
 
@@ -984,36 +1008,124 @@ def netdb_yaml_data( yaml=None, **kwargs ):
             if 'ipnum' in i:
                 for ip in i['ipnum']:
                     p['ip_address'] = ip
+                    p['hostname'] = i['name'].upper()
                     ports.append( p )
     
-        bldg = doc['bldg'] if not doc['bldg'] == 'Not found' else None
-        room = doc['room'] if not doc['room'] == 'UNKNOWN' else None
+        loc = {
+            'building': doc['bldg'] if not doc['bldg'] == 'Not found' else None,
+            'room': str(doc['room']) if not doc['room'] == 'UNKNOWN' else None
+        }
+        if loc['room'] and ';' in str(loc['room']):
+            a = loc['room'].split(';')
+            loc['room'] = a.pop(0).strip()
+            for i in a:
+                try:
+                    k,v = i.strip().split('=')
+                    loc[k] = v
+                except:
+                    pass
 
+        # usernames
         try:
             fullname = None
-            user = None
-            fullname, user = doc['users'][0].split( ' (' )
-            user = user[:-1] # strip )
+            username = None
+            fullname, username = doc['users'][0].split( ' (' )
+            username = username[:-1] # strip )
         except:
             pass
+        user = {}
+        # print "  -> %s " % (users_by_username, )
+        if username in users_by_username:
+            # logging.error("username: %s\t%s" % (username,username in users_by_username))
+            user = users_by_username[username]
+            # r['user']['username'] = r['username'].lower()
      
+        # OS
+        m = search( '^(?P<name>.*) (?P<version>\d+\.\d+(\.\d+)?)', doc['os'][0] )
+        os = {
+            'name': doc['os'][0]
+        }
+        if m:
+            os = m.groupdict()
+            # temp: to ease migration
+            del os['version']
+     
+        # admin teams
+        admin = None
+        for a in doc['admins']:
+            if a.endswith(';'):
+                admin = a
+     
+        # model
+        branding = {}
+        # logging.error('MODEL: %s' %(doc['model'],))
+        if not doc['model'] == 'UNKNOWN: any (UNKNOWN)':
+            m = search( r'^(?P<make>.*): (?P<model>.*) \((?P<device_type>.*)\)$', doc['model'] )
+            if m:
+                branding = m.groupdict()
+                branding['device_type'] = branding['device_type'].lower()
+            # logging.error(" OT: %s" % branding)
         this = {
             'id': doc['id'],
-            'nodename': doc['node'],
-            'location': { 'building': bldg, 'room': room },
+            'nodename': doc['node'].upper(),
+            'location': loc,
             "status": doc['state'],
-            'model': doc['model'],
-            'os': {
-                'name': doc['os'][0],
-            },
+            'manufacturer': branding['make'] if 'make' in branding else None,
+            'model': branding['model'] if 'model' in branding else None,
+            'device_type': branding['device_type'] if 'device_type' in branding else None,
+            'os': os,
             'full_name': fullname,
-            'username': user,
-            'port': ports,
+            'username': username,
+            'user': user,
+            'admin_group': admin,
         }
+        
+        if this['model'] in ( 'System Configuration: Not Available    X4500', ):
+            del this['model']
+        
+        
+        # assets
+        if 'tags' in doc:
+            for tag in doc['tags']:
+                for t,v in tag.iteritems():
+                    if t == 'Asset':
+                        # logging.error("%s\t-> %s" % (doc['node'],v) )
+                        if v:
+                            for a in str(v).split(';'):
+                                # strip leading space
+                                a = a.lstrip()
+                                if '=' in a:
+                                    try:
+                                        k,x = a.split('=')
+                                        # logging.error("  -- %s\t%s" % (k,x))
+                                        this[k] = x
+                                    except:
+                                        logging.error("could not parse tag %s -> %s" % (doc['node'],a) )
+                                        pass
+                                else:
+                                    logging.error("could not parse tag %s -> %s" % (doc['node'],v) )
 
         # logging.error(" >> %s" % (this,))
 
-        yield this
+        # yield this
+        for y in ports:
+            this['port'] = y
+            if '_id' in this:
+                del this['_id']
+            # logging.debug(">> %s" % (o,))
+            yield this
+    
+    
+def get_dhcp_ips( path=None, **kwargs ):
+    dhcps = {}
+    with open( path, 'r' ) as f:
+        for i in f.readlines():
+            m = search( r'^\s*(?P<name>\S+)\s+IN A\s+(?P<ip>\d+\.\d+\.\d+\.\d+)', i)
+            # logging.error("I: %s" % (i,))
+            if m:
+                d = m.groupdict() 
+                dhcps[d['ip']] = True
+    return dhcps
     
     
 
@@ -1022,9 +1134,8 @@ def pull_db( mongo, this, accounts={}, ensure_indexes=( 'nodename', 'port.mac_ad
     logging.info("Pulling data from %s" % (this,))
 
     cache = get_mongo_collection( mongo, this )
-
     # clear the cache
-    cache.remove()
+    cache.drop()
 
     out = None
 
@@ -1032,10 +1143,8 @@ def pull_db( mongo, this, accounts={}, ensure_indexes=( 'nodename', 'port.mac_ad
     cando = get_oracle( **accounts['oracle'] )
 
     # lookup for if a host is dhcp or not
-    dhcp_table = {}
-    #for i,n,d in get_cando_ip_dns( cando ):
-    #    if d:
-    #        dhcp_table[i] = True
+    dhcp_table = get_dhcp_ips( **accounts['dhcp'] )
+    # logging.error("DHCP: %s" % (dhcp_table,))
 
     if this == 'taylor':
 
@@ -1076,14 +1185,14 @@ def pull_db( mongo, this, accounts={}, ensure_indexes=( 'nodename', 'port.mac_ad
         
     elif this == 'netdb':
         
-        
-        out = [ cache.insert(t) for t in netdb_yaml_data( **accounts[this] ) if t ]
+        by_id, by_name, by_username = get_users( cando )
+        out = [ cache.insert(t) for t in netdb_yaml_data( users_by_username=by_username, **accounts[this] ) if t ]
             
     
     elif this == 'ptolemy_arp':
     
         # get arps
-        p = get_postgres( *accounts[this] )
+        p = get_postgres( **accounts[this] )
         out = []
         for t in ptolemy_arp_data( p, dhcp_table=dhcp_table ):
             try:

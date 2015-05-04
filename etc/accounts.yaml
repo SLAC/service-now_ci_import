@@ -47,4 +47,8 @@ bis:
   tns: SLAC
 
 netdb:
+  update_bin: /u/sf/ytl/net/projects/service-now_ci_import/bin/update_netdb.sh
   yaml: /afs/slac/g/scs/net/netdb/node.yaml
+
+dhcp:
+  path: /afs/slac/g/scs/net/netdb/dhcp_ips.txt

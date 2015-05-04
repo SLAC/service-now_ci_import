@@ -1,91 +1,153 @@
+#
+# # by_serial: {
+# #     'start_db': 'rackwise',
+# #     'tactics': [
+# #         ( 'bis', [ 'serial' ] ),
+# #         ( 'bis', [ 'PC' ] ),
+# #         ( 'sccm', [ 'serial' ] ),
+# #         ( 'taylor', [ 'serial' ] ),
+# #         ( 'sccm', [ 'nodename' ] ),
+# #         ( 'taylor', [ 'nodename' ] ),
+# #     ],
+# # },
+#
+# by_rackwise:
+#   start_db: rackwise
+#   tactics:
+#     - db: bis
+#       field:
+#         - serial
+#     - db: bis
+#       field:
+#         - PC
+#     - db: sccm
+#       field:
+#         - serial
+#     - db: taylor
+#       field:
+#         - serial
+#     - db: sccsm
+#       field:
+#         - nodename
+#     - db: taylor
+#       field:
+#         - nodename
+#
+#
+# # 'by_mac_address': {
+# #     'start_db': 'ptolemy_arp',
+# #     'tactics': [
+# #         # try to find the mac address for the found ip address using ptolemy
+# #         # then fill in the rest based from the mac address
+# #         ( 'sccm', [ 'port', 'mac_address' ], True ),
+# #         ( 'taylor', [ 'port', 'mac_address' ] ),
+# #         ( 'dhcp', [ 'port', 'mac_address' ] ),
+# #         # ( 'sccm', [ 'port', 'ip_address' ], True ),
+# #         # ( 'taylor', [ 'port', 'ip_address' ] ),
+# #         # ( 'cando', [ 'port', 'ip_address' ], False, { 'is_vm:value': { True: ( 'nodename', 'os', 'manufacturer', 'model', 'PC', 'PO', 'port' ) } } ), # no recent, ignore vm's
+# #         ( 'cando', [ 'port', 'ip_address' ], False, { 'is_vm:value': { True: ( 'nodename', 'os', 'manufacturer', 'model', 'PC', 'PO' ) } } ), # no recent, ignore vm's
+# #         ( 'ptolemy_device', [ 'nodename' ] ),
+# #         ( 'bis', [ 'serial' ] ),
+# #         ( 'bis', [ 'PC' ] ),
+# #         ( 'dhcp', [ 'PC', ] ),
+# #         ( 'rackwise', [ 'serial', ] ),
+# #         ( 'rackwise', [ 'PC', ] ),
+# #     ],
+# # },
+#
+# by_mac_address:
+#   start_db: 'ptolemy_arp'
+#   tactics:
+#     # try to find the mac address for the found ip address using ptolemy
+#     # then fill in the rest based from the mac address
+#     - db: sccm
+#       field:
+#         - port
+#         - mac_address
+#       time: True
+#     - db: taylor
+#       field:
+#         - port
+#         - mac_address
+#     - db: netdb
+#       field:
+#         - port
+#         - ip_address
+#     - db: ptolemy_device
+#       field:
+#         - nodename
+#     - db: bis
+#       field:
+#         - serial
+#     - db: bis
+#       field:
+#         - PC
+#     - db: rackwise
+#       field:
+#         - serial
+#     - db: rackwise
+#       field:
+#         - PC
+#
 
-# by_serial: {
-#     'start_db': 'rackwise',
-#     'tactics': [
-#         ( 'bis', [ 'serial' ] ),
-#         ( 'bis', [ 'PC' ] ),
-#         ( 'sccm', [ 'serial' ] ),
-#         ( 'taylor', [ 'serial' ] ),
-#         ( 'sccm', [ 'nodename' ] ),
-#         ( 'taylor', [ 'nodename' ] ),
-#     ],
-# },
 
-by_rackwise:
-  start_db: rackwise
+
+testing:
+  start_db: ptolemy_arp
   tactics:
-    - db: bis
-      fields:
-        - serial
-    - db: bis
-      fields:
-        - PC
     - db: sccm
-      fields:
-        - serial
-    - db: taylor
-      fields:
-        - serial
-    - db: sccsm
-      fields:
-        - nodename
-    - db: taylor
-      fields:
-        - nodename
-      
-      
-# 'by_mac_address': {
-#     'start_db': 'ptolemy_arp',
-#     'tactics': [
-#         # try to find the mac address for the found ip address using ptolemy
-#         # then fill in the rest based from the mac address
-#         ( 'sccm', [ 'port', 'mac_address' ], True ),
-#         ( 'taylor', [ 'port', 'mac_address' ] ),
-#         ( 'dhcp', [ 'port', 'mac_address' ] ),
-#         # ( 'sccm', [ 'port', 'ip_address' ], True ),
-#         # ( 'taylor', [ 'port', 'ip_address' ] ),
-#         # ( 'cando', [ 'port', 'ip_address' ], False, { 'is_vm:value': { True: ( 'nodename', 'os', 'manufacturer', 'model', 'PC', 'PO', 'port' ) } } ), # no recent, ignore vm's
-#         ( 'cando', [ 'port', 'ip_address' ], False, { 'is_vm:value': { True: ( 'nodename', 'os', 'manufacturer', 'model', 'PC', 'PO' ) } } ), # no recent, ignore vm's
-#         ( 'ptolemy_device', [ 'nodename' ] ),
-#         ( 'bis', [ 'serial' ] ),
-#         ( 'bis', [ 'PC' ] ),
-#         ( 'dhcp', [ 'PC', ] ),
-#         ( 'rackwise', [ 'serial', ] ),
-#         ( 'rackwise', [ 'PC', ] ),
-#     ],
-# },
-
-by_mac_address:
-  start_db: 'ptolemy_arp',
-  tactics:
-    # try to find the mac address for the found ip address using ptolemy
-    # then fill in the rest based from the mac address
+      field:
+        - port
+        - mac_address
+      time: True
     - db: sccm
-      fields: 
+      field:
+        - port
+        - ip_address
+      time: True
+    - db: taylor
+      field:
         - port
         - mac_address
       time: True
     - db: taylor
-      fields:
-        - port
-        - mac_address
-    - db: netdb
-      fields:
+      field:
         - port
         - ip_address
-    - db: ptolemy_device
-      fields:
-        - nodename
+      time: True
+    - db: netdb
+      field:
+        - port
+        - mac_address
+      filter:
+        'is_vm:value':
+          True:
+            - nodename
+            - os
+            - manufacturer
+            - model
+            - PC
+            - PO
+            - port
+    - db: netdb
+      field:
+        - port
+        - ip_address
+    # - db: netdb
+    #   field:
+    #     - nodename
+    # - db: netdb
+    #   field:
+    #     - serial
     - db: bis
-      fields:
+      field:
         - serial
     - db: bis
-      fields:
+      field:
         - PC
     - db: rackwise
-      fields:
+      field:
         - serial
     - db: rackwise
-      fields:
+      field:
         - PC
-      

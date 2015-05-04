@@ -20,32 +20,15 @@ except ImportError:
 import argparse
 import logging
 
-
-
 DB_NAMES = ['taylor','rackwise','ptolemy_arp','bis','sccm','netdb']
-OUTPUT_DB = 'by_rackwise'
+OUTPUT_DB = 'testing'
 
-# , 'port:hostname', 'port:dhcp', 'port:ip_address', 'subnet', 'port:mac_address',
-OUTPUT_FIELDS = [ 'nodename', 'device_type', 'is_vm', 'user:id', 'user:username', 'user:directorate', 'admin:id', 'admin:username', 'custodian:username', 'owner', 'os:name', 'os:version', 'cpu:cores', 'memory', 'disk:capacity', 'manufacturer', 'model', 'serial', 'PC', 'PO', 'location:building', 'location:room', 'location:rack', 'location:ru', 'warranty:start', 'warranty:end', 'updated_at' ]
-
-# MERGE_STRATEGY = {
-#     OUTPUT_DB: {
-#         'start_db': 'rackwise',
-#         'tactics': [
-#             ( 'bis', [ 'serial' ] ),
-#             ( 'bis', [ 'PC' ] ),
-#             ( 'sccm', [ 'serial' ] ),
-#             ( 'taylor', [ 'serial' ] ),
-#             ( 'sccm', [ 'nodename' ] ),
-#             ( 'taylor', [ 'nodename' ] ),
-#         ],
-#     },
-# }
+OUTPUT_FIELDS = [ 'nodename', 'device_type', 'is_vm', 'port:hostname', 'port:dhcp', 'port:ip_address',  'port:mac_address', 'user:id', 'user:username', 'user:directorate', 'custodian:id', 'custodian:username', 'owner', 'os:name', 'os:version', 'manufacturer', 'model', 'serial', 'PC', 'PO', 'location:building', 'location:room', 'location:rack', 'location:ru', 'cpu:cores', 'memory', 'disk:capacity', 'warranty:start', 'warranty:end', 'updated_at' ]
 
 
 def update_db( mongo, kwargs ):
     if 'all' in kwargs['db']:
-        kwargs['db'] = db_names
+        kwargs['db'] = DB_NAMES
     while len(kwargs['db']):
         db = kwargs['db'].pop()
         pull_db( mongo, db, accounts=kwargs['accounts'] )
@@ -61,6 +44,7 @@ if __name__ == '__main__':
     # configs
     parser.add_argument('--accounts', help='account configurations', default=ETC_PATH+'accounts.yaml' )
     parser.add_argument('--strategies', help='merging strategy configurations', default=ETC_PATH+'strategies.yaml' )
+    parser.add_argument('--content_remaps', help='remapping values', default=ETC_PATH+'remaps.yaml' )
 
     subparsers = parser.add_subparsers( help='sub-command help' )
     
@@ -92,6 +76,7 @@ if __name__ == '__main__':
     # load configs
     kwargs['accounts'] = load( open(kwargs['accounts'],'r'), Loader=Loader )
     kwargs['strategies'] = load( open(kwargs['strategies'],'r'), Loader=Loader )
+    kwargs['content_remaps'] = load( open(kwargs['content_remaps'],'r'), Loader=Loader )
     
     # setup cache for searching etc
     mongo = get_mongo( **kwargs['accounts']['mongo'] )
@@ -99,7 +84,7 @@ if __name__ == '__main__':
     # pre
     p = get_postgres( **kwargs['accounts']['ptolemy_arp'] )
     subnets = {}
-    if kwargs['action'] in ( 'merge', 'dump', 'netdb' ):
+    if kwargs['action'] in ( 'merge', 'dump' ):
         subnets = get_subnets( p )
 
     # regex force
@@ -115,5 +100,5 @@ if __name__ == '__main__':
         merge( mongo, subnets=subnets, db_names=DB_NAMES, strategies=kwargs['strategies'], ips=kwargs['ips'] )
         
     elif kwargs['action'] == 'dump':
-        dump( mongo, subnets=subnets, nodenames=kwargs['nodenames'], db_name=OUTPUT_DB, pre_collate=kwargs['nogen'], fields=OUTPUT_FIELDS, null_char=kwargs['null_char'], force=kwargs['force'] )
+        tsv( mongo, subnets=subnets, nodenames=kwargs['nodenames'], db_name=OUTPUT_DB, pre_collate=kwargs['nogen'], fields=OUTPUT_FIELDS, null_char=kwargs['null_char'], force=kwargs['force'], content_remaps=kwargs['content_remaps'] )
 
