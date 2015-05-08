@@ -1,5 +1,6 @@
 from collate import *
 
+import datetime
 
 def report( mongo, clear_states=True, process_main=True, process_others=False, content_remaps={}, **kwargs ):
     """ return unique nodes; nodes with valid multiple interfaces will have len(_ports_) > 1 """
@@ -766,7 +767,10 @@ def tsv( mongo, extra_headers=['state','number_errors','error_type','errors'], n
                     pass
                 # logging.debug(" f: %s\t %s\t%s" % (f,v,type(v)))
                 if v:
-                    v = v.encode('ascii','ignore')
+                    try:
+                        v = str(v).encode('ascii','ignore')
+                    except:
+                        pass
                 stuff.append( v if v else '%s'%null_char )
             
             sorted_errors = [ e for e in format_errors( errors ) ]
@@ -785,6 +789,55 @@ def tsv( mongo, extra_headers=['state','number_errors','error_type','errors'], n
     logging.error("OUPUT PERCENT BAD: %spc\t(%s/%s)" % (bad*100/good if good > 0 else 100,bad,good))
     
     
+def flat( mongo, extra_headers=['state','number_errors','error_type','errors'], null_char='', content_remaps={}, header_remaps={}, **kwargs ):
+    """ output results to json """
+    
+    bad = 0
+    good = 0
+
+    def normalise( k, v, header_remaps ):
+        if k in header_remaps:
+            key = header_remaps[k]
+            this[key] = v
+            if id(type) and type(v) in ( datetime.datetime, datetime.date ):
+                return key, str(v)
+            elif isinstance( v, list ):
+                if len(v) == 1:
+                    return key, v[0]
+                elif len(v) == 0:
+                    return key, None
+        return None, None
+
+    for state, item, errors, error_type in report( mongo, content_remaps=content_remaps, **kwargs ):
+
+        this = {}
+        # stupid datetime in json
+        for k,v in item.iteritems():
+            if k in ( '_ports_', ):
+                continue
+            key, value = normalise( k,v, header_remaps )
+            if key:
+                this[key] = value
+
+        for p in item['_ports_']:
+
+            for k,v in p.iteritems():
+                key, value = normalise( k,v, header_remaps )
+                # logging.error("K: %s\t%s" % (k,key))
+                if key:
+                    this[key] = value
+
+            if state:
+                good = good + 1
+                yield this
+            else:
+                bad = bad + 1
+    
+    logging.error("OUPUT PERCENT BAD: %spc\t(%s/%s)" % (bad*100/good if good > 0 else 100,bad,good))
+    
+
+
+
     
 def netdb( mongo, **kwargs ):
     """ output the data in netdb batch file format """

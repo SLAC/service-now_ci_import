@@ -16,9 +16,17 @@ try:
     from yaml import CLoader as Loader, CDumper as Dumper
 except ImportError:
     from yaml import Loader, Dumper
-    
+from json import dumps as json_dumps, load as json_load
+
+from re import sub
+
+import urllib2
+import base64
+
 import argparse
 import logging
+
+
 
 DB_NAMES = ['taylor','rackwise','ptolemy_arp','bis','sccm','netdb']
 OUTPUT_DB = 'testing'
@@ -33,6 +41,27 @@ def update_db( mongo, kwargs ):
         db = kwargs['db'].pop()
         pull_db( mongo, db, accounts=kwargs['accounts'] )
 
+
+def _upload( url, user, password, data ):
+    auth = base64.encodestring('%s:%s' % (user,password)).replace('\n','')
+    req = urllib2.Request( url, data, { 'Content-Type': 'application/json' } )
+    req.add_header("Authorization", "Basic %s" % auth )
+    f = urllib2.urlopen(req)
+    # resp = f.read()
+    for i in json_load(f)['records']:
+        yield i
+    # print "RESP: %s" % (resp,)
+    f.close()
+
+def upload( url, user, password, data ):
+    for i in _upload( url, user, password, data ):
+        status = True if i['__status'] == 'success' else None
+        if not i['sys_import_state_comment'] in ( '', 'No field values changed' ):
+            status = False
+        # stip building prepend
+        i['u_location_building'] = sub( r'^B', '', i['u_location_building'] )
+        print i['u_location_building']
+        yield i['u_nodename'], status, i['sys_import_state_comment'], i
 
 if __name__ == '__main__':
 
@@ -57,7 +86,7 @@ if __name__ == '__main__':
     b.set_defaults( action='merge' )
     b.add_argument( 'ips', nargs="*" )
 
-    for i in ( 'dump', ):
+    for i in ( 'dump', 'upload' ):
         c = subparsers.add_parser( i, help='output final data to %s format' % (i,) )
         c.set_defaults( action=i )
         c.add_argument( 'nodenames', nargs="*" )
@@ -101,4 +130,39 @@ if __name__ == '__main__':
         
     elif kwargs['action'] == 'dump':
         tsv( mongo, subnets=subnets, nodenames=kwargs['nodenames'], db_name=OUTPUT_DB, pre_collate=kwargs['nogen'], fields=OUTPUT_FIELDS, null_char=kwargs['null_char'], force=kwargs['force'], content_remaps=kwargs['content_remaps'] )
+
+    elif kwargs['action'] == 'upload':
+        chunk = 100
+        m = 0
+        data = { 'records': [] }
+        for n,i in enumerate( flat( mongo, subnets=subnets, nodenames=kwargs['nodenames'], db_name=OUTPUT_DB, pre_collate=kwargs['nogen'], fields=OUTPUT_FIELDS, null_char=kwargs['null_char'], force=kwargs['force'], content_remaps=kwargs['content_remaps'], header_remaps={
+            'serial': 'u_serial',
+            'PC': 'u_pc',
+            'nodename': 'u_nodename',
+            'port:ip_address': 'u_port_ip_address',
+            'port:mac_address': 'u_port_mac_address',
+            'user:id': 'u_user_id',
+            'custodian:id': 'u_custodian_id',
+            'PO': 'u_po',
+            'warranty:start': 'u_warranty_start',
+            'device_type': 'u_device_type',
+            'manufacturer': 'u_manufacturer',
+            'model': 'u_model',
+            'location:building': 'u_location_building',
+            'location:room': 'u_location_room',
+        }) ):
+        
+            m = m + 1
+            data['records'].append( i )
+            
+            if m >= chunk:
+                for node, status, message, d in upload( kwargs['accounts']['servicenow']['url'], kwargs['accounts']['servicenow']['user'], kwargs['accounts']['servicenow']['password'], json_dumps( data ) ):
+                    if not status:
+                        print '%s\t%s\t%s' % ( node, status, message )
+                    data = { 'records': [] }
+                    m = 0
+                
+        
+                
+
 
