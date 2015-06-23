@@ -22,7 +22,7 @@ from re import sub
 
 import urllib2
 import base64
-
+from datetime import datetime 
 import argparse
 import logging
 
@@ -58,9 +58,6 @@ def upload( url, user, password, data ):
         status = True if i['__status'] == 'success' else None
         if not i['sys_import_state_comment'] in ( '', 'No field values changed' ):
             status = False
-        # stip building prepend
-        i['u_location_building'] = sub( r'^B', '', i['u_location_building'] )
-        print i['u_location_building']
         yield i['u_nodename'], status, i['sys_import_state_comment'], i
 
 if __name__ == '__main__':
@@ -94,6 +91,9 @@ if __name__ == '__main__':
         c.add_argument( '--nogen', default=True, action='store_false' )
         c.add_argument( '--null_char', default='-' )
         c.add_argument( '--force', default=False, action='store_true' )
+    
+    d = subparsers.add_parser( 'sccm-sw', help='upload sccm sw cis' )
+    d.set_defaults( action='sccm-sw' )
     
     kwargs = vars(parser.parse_args())
     
@@ -162,7 +162,28 @@ if __name__ == '__main__':
                     data = { 'records': [] }
                     m = 0
                 
+    elif kwargs['action'] == 'sccm-sw':
         
-                
+        def dt( s ):
+            if isinstance(s,datetime):
+                return '%s'%s
+            return s
+            
+        def utf8( s ):
+            return s.encode('utf-8')
+        
+        cur = get_odbc( **kwargs['accounts']['sccm'] )
+        fields = ( 'machine name', 'publisher', 'product name', 'version', 'installed' )
+        print '\t'.join(fields)
+        for i in sccs_sw_data( cur ):
+            # print i
+            this = []
+            for n in fields:
+                v = dt(i[n])
+                if v == None:
+                    v = '-'
+                this.append( v )
+            t = '\t'.join( v for v in this )
+            print utf8(t)
 
 

@@ -829,6 +829,10 @@ def flat( mongo, extra_headers=['state','number_errors','error_type','errors'], 
 
             if state:
                 good = good + 1
+                # strip building prepend
+                # print this['u_location_building']
+                if this['u_location_building']:
+                    this['u_location_building'] = sub( r'^B', '', this['u_location_building'] )
                 yield this
             else:
                 bad = bad + 1

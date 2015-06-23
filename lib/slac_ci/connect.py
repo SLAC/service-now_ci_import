@@ -1116,6 +1116,28 @@ def netdb_yaml_data( update_bin=None, yaml=None, users_by_username={}, **kwargs 
             yield this
     
     
+###
+# rackwise sql
+###
+def sccs_sw_data( cursor ):
+
+    cursor.execute("""SELECT 
+            Name as [machine name], 
+            Publisher0 as [publisher],
+            ProductName0 as [product name], 
+            ProductVersion0 as [version], 
+            InstallDate0 as [installed]
+        FROM  vWORKSTATIONSTATUS 
+        INNER JOIN v_GS_INSTALLED_SOFTWARE on v_GS_INSTALLED_SOFTWARE.ResourceID = vWORKSTATIONSTATUS.ResourceID
+    """)
+    # vWORKSTATIONSTATUS
+    #         INNER JOIN vWORKSTATIONSTATUS on vWORKSTATIONSTATUS.ResourceID = vSMS_R_System.ResourceId
+
+    fields = ( 'machine name', 'product name', 'version', 'installed' ) #'publisher', 
+    for i in rows_to_dict_list(cursor):
+        yield i
+
+    
 def get_dhcp_ips( path=None, **kwargs ):
     dhcps = {}
     with open( path, 'r' ) as f:
