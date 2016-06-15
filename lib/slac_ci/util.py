@@ -29,3 +29,8 @@ def nameify( s ):
     except:
         return {}
 
+def get_file_contents( passfile ):
+    password = None
+    with open( passfile ) as f:
+        password = f.readlines().pop().strip()
+    return password

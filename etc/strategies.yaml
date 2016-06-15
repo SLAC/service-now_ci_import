@@ -93,7 +93,7 @@
 
 
 testing:
-  start_db: ptolemy_arp
+  start_db: arps
   tactics:
     - db: sccm
       field:

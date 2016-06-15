@@ -1,61 +1,95 @@
-mongo:
-  host: localhost
-  db: assets
+###
+# main consolidation database
+###
+main:
+  
+  mongo:
+    host: localhost
+    db: assets
 
-oracle:
-  user: cando_anyuser
-  password: /u/sf/ytl/net/netmon/lanmon/etc/cando.read
-  host: slac-tcp
-  port: 1521
-  sid: SLAC
-  tns: SLAC
-  
-taylor:
-  path: /afs/slac/g/scs/systems/system.info/
-  files:
-    - taylor.environ
-    - nicinfo
-  
-sccm:
-  user: SLAC\ytl
-  password: /u/sf/ytl/private/windows.password
-  dsn: sccm
-  
-ptolemy:
-  user: ptolemy
-  password: /u/sf/ytl/private/ptolemy.password
-  host: net-graphite01
-  db: ptolemy_production
 
-ptolemy_arp:
-  user: ptolemy
-  password: /u/sf/ytl/private/ptolemy.password
-  host: net-graphite01
-  db: ptolemy_production
+###
+# support databases
+###
+support:
   
-rackwise:
-  user: SLAC\ytl
-  password: /u/sf/ytl/private/windows.password
-  dsn: rackwise
-  
-bis:
-  user: netdb
-  password: /u/sf/ytl/private/netdb.password
-  host: slac-tcp
-  port: 1521
-  sid: SLAC
-  tns: SLAC
+  dhcp:
+    path: /afs/slac/g/scs/net/netdb/dhcp_ips.txt
+    
+  subnets:
+    user: ptolemy
+    password: /u/sf/ytl/private/ptolemy.password
+    host: net-graphite01
+    db: ptolemy_production
 
-netdb:
-  update_bin: /u/sf/ytl/net/projects/service-now_ci_import/bin/update_netdb.sh
-  yaml: /afs/slac/g/scs/net/netdb/node.yaml
+  users:
+    user: cando_anyuser
+    password: /u/sf/ytl/net/netmon/lanmon/etc/cando.read
+    host: slac-tcp
+    port: 1521
+    sid: SLAC
+    tns: SLAC
 
-dhcp:
-  path: /afs/slac/g/scs/net/netdb/dhcp_ips.txt
+
+###
+# asset databases
+###
+assets:
+
+  taylor:
+    path: /afs/slac/g/scs/systems/system.info/
+    files:
+      - taylor.environ
+      - nicinfo
   
-servicenow:
-  url: https://slacdev.service-now.com/u_ci_import.do?JSONv2&sysparm_action=insert
-  #url: https://slactest.service-now.com/u_ci_import.do?JSONv2&sysparm_action=insert
-  #url: https://slacprod.service-now.com/u_ci_import.do?JSONv2&sysparm_action=insert
-  user: wsimport
-  password: Serv1ceN0w
+  sccm:
+    user: SLAC\ytl
+    password: /u/sf/ytl/private/windows.password
+    dsn: sccm
+  
+  ptolemy:
+    user: ptolemy
+    password: /u/sf/ytl/private/ptolemy.password
+    host: net-graphite01
+    db: ptolemy_production
+
+  arps:
+    user: ptolemy
+    password: /u/sf/ytl/private/ptolemy.password
+    host: net-graphite01
+    db: ptolemy_production
+  
+  rackwise:
+    user: SLAC\ytl
+    password: /u/sf/ytl/private/windows.password
+    dsn: rackwise
+  
+  bis:
+    user: netdb
+    password: /u/sf/ytl/private/netdb.password
+    host: slac-tcp
+    port: 1521
+    sid: SLAC
+    tns: SLAC
+
+  netdb:
+    update_bin: /u/sf/ytl/net/projects/service-now_ci_import/bin/update_netdb.sh
+    yaml: /afs/slac/g/scs/net/netdb/node.yaml
+
+  casper:
+    uri: https://casper.slac.stanford.edu:8443
+    user: ytl-api
+    password: /u/sf/ytl/private/casper.password
+
+
+###
+# service now
+###
+uploads:
+  
+  service-now:
+    url: https://slacdev.service-now.com/u_ci_import.do?JSONv2&sysparm_action=insert
+    #url: https://slactest.service-now.com/u_ci_import.do?JSONv2&sysparm_action=insert
+    #url: https://slacprod.service-now.com/u_ci_import.do?JSONv2&sysparm_action=insert
+    user: wsimport
+    password: /u/sf/ytl/private/service-now.password

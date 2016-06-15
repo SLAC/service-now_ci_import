@@ -18,8 +18,8 @@ import os
 import logging
 
 from util import mac_address, parse_number
-from connect import get_mongo_collection
-
+# from connect import get_mongo_collection
+from slac_ci.datasources import get_mongo_collection
 
 # CONTENT_REMAP =
 
@@ -344,31 +344,7 @@ def remove_dups( item ):
     # logging.error("OUT: %s\n" % out )
     return out
 
-def merge( mongo, ips=[], subnets={}, null_char='', db_names=[], ensure_indexes=( 'nodename.value', 'port.mac_address', 'port.ip_address', 'serial.value', 'PC.value' ), content_remaps={}, strategies={}
-# {
-#         'by_mac_address': {
-#             'start_db': 'ptolemy_arp',
-#             'tactics': [
-#                 # try to find the mac address for the found ip address using ptolemy
-#                 # then fill in the rest based from the mac address
-#                 ( 'sccm', [ 'port', 'mac_address' ], True ),
-#                 ( 'taylor', [ 'port', 'mac_address' ] ),
-#                 ( 'dhcp', [ 'port', 'mac_address' ] ),
-#                 # ( 'sccm', [ 'port', 'ip_address' ], True ),
-#                 # ( 'taylor', [ 'port', 'ip_address' ] ),
-#                 # ( 'cando', [ 'port', 'ip_address' ], False, { 'is_vm:value': { True: ( 'nodename', 'os', 'manufacturer', 'model', 'PC', 'PO', 'port' ) } } ), # no recent, ignore vm's
-#                 ( 'cando', [ 'port', 'ip_address' ], False, { 'is_vm:value': { True: ( 'nodename', 'os', 'manufacturer', 'model', 'PC', 'PO' ) } } ), # no recent, ignore vm's
-#                 ( 'ptolemy_device', [ 'nodename' ] ),
-#                 ( 'bis', [ 'serial' ] ),
-#                 ( 'bis', [ 'PC' ] ),
-#                 ( 'dhcp', [ 'PC', ] ),
-#                 ( 'rackwise', [ 'serial', ] ),
-#                 ( 'rackwise', [ 'PC', ] ),
-#             ],
-#         },
-#     }
-    
-    ):
+def merge( mongo, ips=[], subnets={}, null_char='', db_names=[], ensure_indexes=( 'nodename.value', 'port.mac_address', 'port.ip_address', 'serial.value', 'PC.value' ), content_remaps={}, strategies={} ):
     """ 
     use referential transparency to simplify the merging
     basically keep the same datastructure for all sources of data in the form dict = { field1: [], field2: []...}
@@ -389,13 +365,17 @@ def merge( mongo, ips=[], subnets={}, null_char='', db_names=[], ensure_indexes=
     good = 0
     bad = 0
     total = 0
+    
+    print "Bad Records:"
+    print
+    
     print "nodename\tadmin\tuser\thostname\tdhcp\tdhcp_ip_address\tip_address\tmac_address\tsubnet\tupdated_at\tage"
     
     now = datetime.now()
     
     for name, strategy in strategies.iteritems():
 
-        logging.info("strategy: %s %s" % (name, strategy))
+        logging.debug("strategy: %s %s" % (name, strategy))
         # clear staging db
         dbs[name] = get_mongo_collection( mongo, name )
         dbs[name].remove()
@@ -603,27 +583,6 @@ def merge_other( mongo, frm='cando', to='by_mac_address', subnets={}, init_searc
 
     logging.info("%s: total=%s, add=%s (%s), merge=%s (%s), skipped=%s" % (frm, total, need_to_add, need_to_add*100/total, need_to_merge, need_to_merge*100/total, skipped) )
 
-
-def get_subnets( cursor ):
-    cursor.execute( """SELECT *
-    FROM
-      subnets
-    """ )
-    subnets = {}
-    for d in cursor:
-        i = d['prefix'] + '/' + d['netmask']
-        # print ' %s' % (i,)
-        try:
-            k = ipaddress.ip_network(i)
-            s = search( r'vlan\s*(?P<vlan>\d+)', d['description'], IGNORECASE )
-            d['vlan'] = None
-            if s:
-                d['vlan'] = s.groupdict()['vlan']
-            # logging.error("VLAN: %s" % (d,))
-            subnets[k] = d
-        except:
-            pass
-    return subnets
 
 
 def ip_in_subnet( ip, subnets ):

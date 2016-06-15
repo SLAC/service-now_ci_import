@@ -92,11 +92,13 @@ model:
     R620: PowerEdge R620
     POWEREDGE R620 10-SFF: PowerEdge R620
     R710: PowerEdge R710
+    POWEREDGE R630: PowerEdge R630
     POWEREDGE R710: PowerEdge R710
     POWEREDGE R715: PowerEdge R715
     POWEREDGE R720: PowerEdge R720
     POWEREDGE R720 - LFF: PowerEdge R720
     POWEREDGE R720 - SFF: PowerEdge R720
+    POWEREDGE R730XD: PowerEdge R730xd
     POWEREDGE R720XD: PowerEdge R720xd
     POWEREDGE R720XD - LFF: PowerEdge R720xd
     POWEREDGE R720XD - SFF: PowerEdge R720xd
@@ -611,6 +613,7 @@ manufacturer:
     VADATECH: VadaTech
     KIP AMERICA: KIP
     PALO ALTO NETWORKS: Palo Alto Networks
+    SEABIOS: RedHat
 
 # device_type:
 #
