@@ -134,10 +134,18 @@ class Netdb( Data ):
                                             # logging.error("  -- %s\t%s" % (k,x))
                                             this[k] = x
                                         except:
-                                            logging.error("could not parse tag %s -> %s" % (doc['node'],a) )
-                                            pass
+                                            LOG.error("could not parse node '%s' -> Asset Tag '%s'" % (doc['node'],a) )
                                     else:
-                                        logging.error("could not parse tag %s -> %s" % (doc['node'],v) )
+                                        m = search('(?P<asset>PC\d{5})',v)
+                                        if m:
+                                            this['PC'] = m.group('asset')
+                                        
+            if not 'PC' in this:
+                m = search('(?P<asset>PC\d{5})', doc['node'])
+                if m:
+                    this['PC'] = m.group('asset')
+                
+            # LOG.error("could not parse '%s' -> v '%s'" % (doc['node'],v) )
 
             # logging.error(" >> %s" % (this,))
 
