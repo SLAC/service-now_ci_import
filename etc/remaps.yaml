@@ -150,6 +150,7 @@ model:
     PRECISION 690: Precision 690
 
     PRECISION T1700: Precision T1700
+    PRECISION T1700MT: Precision T1700
     PRECISION 3400: Precision T3400
     PRECISION T3400: Precision T3400
     PRECISION T3400N: Precision T3400
@@ -299,6 +300,7 @@ model:
     
     LATITUDE E7240: Latitude E7240
     E7240-i7: Latitude E7240
+    LATITUDE E7470: Latitude E7470
     XT3: Latitude XT3
     
     LATITUDE E4300: Latitude E4300
@@ -349,11 +351,22 @@ model:
     SURFACE PRO 3: Surface Pro 3
     SURFACE PRO2: Surface Pro 2
     
+    
     MACBOOKAIR5,2: Macbook Air 13"
     MACBOOK AIR 13: Macbook Air 13"
     MACBOOK AIR 13": Macbook Air 13"
     MACBOOKAIR4,2: Macbook Air 13"
+    MACBOOK (13-INCH ALUMINUM, LATE 2008): Macbook Air 13"
+    MACBOOK AIR (13-INCH MID 2011): Macbook Air 13"
+    MACBOOK AIR (13-INCH MID 2012): Macbook Air 13"
+    MACBOOK AIR (13-INCH MID 2013): Macbook Air 13"
+    MACBOOK AIR (13-INCH EARLY 2015): Macbook Air 13"
+    MACBOOK AIR (LATE 2010): Macbook Air 13"
     MACBOOK AIR: Macbook Air
+    MACBOOK AIR 11": Macbook Air 11"
+    MACBOOK AIR (11-INCH MID 2011): Macbook Air 11"
+    MACBOOK AIR (11-INCH MID 2013): Macbook Air 11"
+    MACBOOK AIR (11-INCH EARLY 2015): Macbook Air 11"
     MACBOOK AIR 11"": Macbook Air 11"
     MACBOOK PRO 13": Macbook Pro 13"
     MACBOOKPRO9,2: Macbook Pro 13"
@@ -361,15 +374,33 @@ model:
     MACBOOK PRO15": Macbook Pro 15"
     MACBOOK PRO 15": Macbook Pro 15"
     MACBOOKPRO6,2: Macbook Pro 15"
+    15-INCH MACBOOK PRO (MID 2010): Macbook Pro 15"
+    15-INCH MACBOOK PRO (2011): Macbook Pro 15"
+    15-INCH RETINA MACBOOK PRO (LATE 2013): Macbook Pro 15"
+    15-INCH RETINA MACBOOK PRO (MID 2012): Macbook Pro 15"
+    15-INCH MACBOOK PRO (MID 2009): Macbook Pro 15"
+    15-INCH MACBOOK PRO (MID 2012): Macbook Pro 15"
+    15-INCH RETINA MACBOOK PRO (MID 2015): Macbook Pro 15"
     MACBOOKPRO10,2: Macbook Pro
     MACBOOKPRO5,3: Macbook Pro
     MACBOOK PRO: Macbook Pro
+    MACBOOK PRO 13: Macbook Pro 13"
     MACBOOK PRO 13.3": Macbook Pro 13"
     MACBOOKPRO8,1: Macbook Pro 13"
+    13-INCH RETINA MACBOOK PRO (LATE 2013): Macbook Pro 13"
+    13-INCH MACBOOK PRO (2011): Macbook Pro 13"
+    13-INCH RETINA MACBOOK PRO (LATE 2012): Macbook Pro 13"
+    13-INCH MACBOOK PRO (MID 2009): Macbook Pro 13"
+    13-INCH MACBOOK PRO (EARLY 2015): Macbook Pro 13"
+    MACBOOK PRO  13: Macbook Pro 13"
+    13-INCH MACBOOK PRO (MID 2012): Macbook Pro 13"
+    
+    MACBOOK (12-INCH RETINA EARLY 2015): Macbook 12"
 
     MACBOOK PRO13: Macbook Pro 13"
     MACBOOK PRO13": Macbook Pro 13"
     MACBOOK PRO 17": Macbook Pro 17"
+    MACBOOK PRO (EARLY 2009): Macbook Pro 17"
     IMAC: iMac
     IMAC11,3: iMac 27"
     IMAC 20": iMac 21"
@@ -377,8 +408,13 @@ model:
     IMAC 21.5": iMac 21"
     IMAC 24": iMac 24"
     IMAC 27": iMac 27"
+    
+    MACPRO (EARLY 2009): Mac Pro
     MAC PRO: Mac Pro
     A1117: Mac Pro
+    MACPRO (EARLY 2009): Mac Pro
+    MACPRO (MID 2010): Mac Pro
+    MACPRO (LATE 2013): Mac Pro
     MAC PRO CTO: Mac Pro
     MAC PRO XE5: Mac Pro
     A1186 MAC PRO: Mac Pro
@@ -388,11 +424,26 @@ model:
     MAC G4: Mac G4
     MAC G5: Mac G5
 
+
+    IMAC INTEL (21.5-INCH, MID 2010): iMac 21"
+    IMAC INTEL (21.5-INCH, LATE 2012): iMac 21"
+    IMAC INTEL (27-INCH, MID 2010): iMac 27"
+    IMAC INTEL (27-INCH, MID 2011): iMac 27"
+    IMAC INTEL (27-INCH, LATE 2012): iMac 27"
+    IMAC INTEL (27-INCH, LATE 2013): iMac 27"
+    IMAC17,1: iMac 27"
+    IMAC INTEL (27-INCH, LATE 2012): iMac 27"
+    IMAC INTEL (RETINA 5K, 27-INCH, LATE 2014): iMac 27"
+
+    MAC MINI (MID 2010): Mac Mini
+    MAC MINI (2009): Mac Mini
     MACMINI4,1: Mac Mini
     MAC MINI: Mac Mini
     
     NEW IPAD AIR 16GB: iPAd Air
-            
+    
+    TIME CAPSULE: Time Capsule
+    
     VENUE 8 PRO 5830: Venue 8 Pro
     VENUE 8 PRO: Venue 8 Pro
     VENUE: Venue 11 Pro 5130
@@ -751,6 +802,11 @@ os:name:
     MICROSOFT(R) WINDOWS(R) XP PROFESSIONAL X64 EDITION: Microsoft Windows
     MICROSOFT® WINDOWS SERVER® 2008 ENTERPRISE: Microsoft Windows
     MICROSOFT® WINDOWS VISTA™ BUSINESS: Microsoft Windows
+    
+    
+    MAC OS X: Apple Mac OSX
+    APPLE MAC OS: Apple Mac OSX 
+    
     
     # HP-JETDIRECT: builtin
     # PROPRIETARY: builtin
