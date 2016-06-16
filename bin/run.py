@@ -3,6 +3,7 @@
 
 # boot strap libs
 import sys, os
+
 pathname = os.path.abspath( os.path.dirname(sys.argv[0]) )
 LIB_PATH =  pathname + '/../lib/'
 sys.path.append( LIB_PATH )
@@ -124,7 +125,8 @@ if __name__ == '__main__':
     # merge
     b = subparsers.add_parser( 'merge', help='merge data from datasources' )
     b.set_defaults( action='merge' )
-    b.add_argument( 'ips', nargs="*" )
+    b.add_argument( '--ip', nargs="*" )
+    b.add_argument( '--mac', nargs="*" )
 
     for i in ( 'dump', 'upload' ):
         c = subparsers.add_parser( i, help='output final data to %s format' % (i,) )
@@ -172,7 +174,7 @@ if __name__ == '__main__':
     ###
     elif kwargs['action'] == 'merge':
         subnets = get_subnets( kwargs['accounts']['support']['subnets'] )
-        merge( mongo, subnets=subnets, db_names=DB_NAMES, strategies=kwargs['strategies'], ips=kwargs['ips'] )
+        merge( mongo, subnets=subnets, db_names=DB_NAMES, strategies=kwargs['strategies'], ips=kwargs['ip'], macs=kwargs['mac'] )
         
     ###
     # output the merged data

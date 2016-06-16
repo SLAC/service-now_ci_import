@@ -313,8 +313,6 @@ def merge_item( dbs, db, fields, d, recent_only=False, ignore=None ):
 
     except LookupError, e:
         pass
-    except NotImplementedError, e:
-        logging.error("ERR: %s" % (e,))
 
     # logging.error("OUT: %s" % (d,))
     return matched_count, d
@@ -344,7 +342,7 @@ def remove_dups( item ):
     # logging.error("OUT: %s\n" % out )
     return out
 
-def merge( mongo, ips=[], subnets={}, null_char='', db_names=[], ensure_indexes=( 'nodename.value', 'port.mac_address', 'port.ip_address', 'serial.value', 'PC.value' ), content_remaps={}, strategies={} ):
+def merge( mongo, ips=[], macs=[], subnets={}, null_char='', db_names=[], ensure_indexes=( 'nodename.value', 'port.mac_address', 'port.ip_address', 'serial.value', 'PC.value' ), content_remaps={}, strategies={} ):
     """ 
     use referential transparency to simplify the merging
     basically keep the same datastructure for all sources of data in the form dict = { field1: [], field2: []...}
@@ -358,8 +356,9 @@ def merge( mongo, ips=[], subnets={}, null_char='', db_names=[], ensure_indexes=
         logging.debug("initiating db %s" % (i,))
         dbs[i] = get_mongo_collection( mongo, i )
     
-    # determine ips to filter for if requested
-    search = [ { 'port.ip_address': i } for i in ips ]
+    # determine to filter for if requested (mutually exclusive)
+    search = [ { 'port.ip_address': i } for i in ips ] if ips else []
+    search = [ { 'port.mac_address': i } for i in macs ] if macs else []
     
     logging.info('merging items with %s' % (search,))
     good = 0
@@ -407,7 +406,12 @@ def merge( mongo, ips=[], subnets={}, null_char='', db_names=[], ensure_indexes=
                 except:
                     pass
                 # logging.debug("   ignore is %s" % (v,))
-                c, d = merge_item( dbs, tactic['db'], tactic['field'], d, recent_only=r, ignore=v )
+                try:
+                    c, d = merge_item( dbs, tactic['db'], tactic['field'], d, recent_only=r, ignore=v )
+                except NotImplementedError, e:
+                    logging.error("NotImplementedError: %s" % (e,))
+                except Exception, e:
+                    logging.error("Error with tactic %s, d=%s: %s" % (tactic,d,e,))
                 # logging.error("C: %s\tD: %s" % (c,d) )
                 if c > 0:
                     d = remove_dups( d )
