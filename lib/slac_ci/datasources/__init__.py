@@ -77,7 +77,7 @@ def pull_db( mongo, datasource, accounts={}, users=None, dhcp=None, ensure_index
         try:
             cache.insert( d )
             count = count + 1
-        except e:
+        except Exception, e:
             LOG.warn("Error: %s" % (e,))
             error = error + 1
     
