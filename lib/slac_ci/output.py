@@ -767,10 +767,12 @@ def tsv( mongo, extra_headers=['state','number_errors','error_type','errors'], n
                     pass
                 # logging.debug(" f: %s\t %s\t%s" % (f,v,type(v)))
                 if v:
-                    try:
-                        v = str(v).encode('ascii','ignore')
-                    except:
-                        pass
+                    # try:
+                    if isinstance( v, datetime.datetime ):
+                        v = str(v)
+                    v = v.encode('latin-1','ignore')
+                    # except:
+                    #     pass
                 stuff.append( v if v else '%s'%null_char )
             
             sorted_errors = [ e for e in format_errors( errors ) ]
@@ -780,7 +782,7 @@ def tsv( mongo, extra_headers=['state','number_errors','error_type','errors'], n
                 bad = bad + 1
 
             print '\t'.join( ['okay' if state else 'bad',] + \
-                ['%s'%len(sorted_errors),error_type if error_type else null_char,'; '.join(sorted_errors) if len(sorted_errors) else null_char] + \
+                ['%s'%len(sorted_errors), error_type if error_type else null_char, '; '.join(sorted_errors) if len(sorted_errors) else null_char] + \
                 stuff 
             )
             # + \
