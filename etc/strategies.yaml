@@ -115,6 +115,16 @@ testing:
         - port
         - ip_address
       time: True
+    - db: casper
+      field:
+        - port
+        - mac_address
+      time: True
+    - db: casper
+      field:
+        - port
+        - ip_address
+      time: True
     - db: netdb
       field:
         - port
