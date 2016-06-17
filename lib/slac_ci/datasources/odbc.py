@@ -10,6 +10,6 @@ class ODBC(Data):
         self.password = password
         self.dsn = dsn
         # DSN required freetds
-        s = 'DSN=%s;UID=%s;PWD=%s;' % (self.dsn,self.user,get_file_contents( self.password ) )
+        s = 'DSN=%s;UID=%s;PWD=%s;CHARSET=UTF8' % (self.dsn,self.user,get_file_contents( self.password ) )
         self.conn = pyodbc.connect(s)
         self.cursor = self.conn.cursor()
