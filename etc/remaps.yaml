@@ -111,6 +111,9 @@ model:
     POWEREDGE M620: PowerEdge M620
     POWEREDGE M620: PowerEdge M620
     M620: PowerEdge M620
+    POWEREDGE M630: PowerEdge M630
+    M630: PowerEdge M630
+
     POWEREDGE R910: PowerEdge R910
 
     POWEREDGE C6100: PowerEdge C6100
