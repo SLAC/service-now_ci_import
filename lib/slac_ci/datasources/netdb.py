@@ -132,7 +132,7 @@ class Netdb( Data ):
                                         try:
                                             k,x = a.split('=')
                                             # logging.error("  -- %s\t%s" % (k,x))
-                                            this[k] = x
+                                            this[k] = x.upper()
                                         except:
                                             LOG.error("could not parse node '%s' -> Asset Tag '%s'" % (doc['node'],a) )
                                     else:
