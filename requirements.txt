@@ -1,0 +1,4 @@
+python-flask
+Flask-PyMongo
+python-pymongo-gridfs
+pyodbc>=2.1.8
