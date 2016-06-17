@@ -2,6 +2,9 @@ from collate import *
 
 import datetime
 
+import logging
+LOG = logging.getLogger(__name__)
+
 def report( mongo, clear_states=True, process_main=True, process_others=False, content_remaps={}, **kwargs ):
     """ return unique nodes; nodes with valid multiple interfaces will have len(_ports_) > 1 """
     # copy db over
@@ -842,7 +845,68 @@ def flat( mongo, extra_headers=['state','number_errors','error_type','errors'], 
     logging.error("OUPUT PERCENT BAD: %spc\t(%s/%s)" % (bad*100/good if good > 0 else 100,bad,good))
     
 
+def commit( mongo, collection_name='final', extra_headers=['state','number_errors','error_type','errors'], null_char=None, content_remaps={}, **kwargs ):
+    """ output result back into new mongo collection """
+    
+    collection = get_mongo_collection( mongo, collection_name )
+    collection.drop()
+    
+    bad = 0
+    good = 0
 
+    def structure( item ):
+        for k in item.keys():
+            if ':' in k:
+                a,b = k.split(':')
+                v = item[k]
+                # if single sized array, flatten
+                if isinstance( v, list ):
+                    if len( v ) == 1:
+                        v = v.pop()
+                    elif len( v ) == 0:
+                        v = None
+                if not a in item:
+                    item[a] = { b: v }
+                else:
+                    item[a][b] = v
+                del item[k]
+        return item
+
+    for state, item, errors, error_type in report( mongo, content_remaps=content_remaps, **kwargs ):
+            
+        item['error_type'] = error_type
+        # the dict errors cannot have '.' in them for keys as mongo doesn't like it
+        if errors:
+            for e in errors.keys():
+                for k in errors[e].keys():
+                    for key in errors[e][k].keys():
+                        this = str(key).replace('.',':')
+                        if not this == key:
+                            errors[e][k][this] = errors[e][k][key]
+                            del errors[e][k][key]
+        item['errors'] = errors
+        if state:
+            good = good + 1
+            item['state'] = 'good'
+        else:
+            bad = bad + 1
+            item['state'] = 'bad'
+    
+        # structure this
+        item = structure( item )
+    
+        # clean up ports
+        item['ports'] = []
+        for p in item['_ports_']:
+            p['port:subnet'] = p['subnet']
+            p = structure( p )
+            item['ports'].append(p['port'])
+        del item['_ports_']
+
+        # LOG.warn("ITEM: %s" % (item,))
+        collection.insert( item )
+    
+    logging.error("OUPUT PERCENT BAD: %spc\t(%s/%s)" % (bad*100/good if good > 0 else 100,bad,good))
 
     
 def netdb( mongo, **kwargs ):

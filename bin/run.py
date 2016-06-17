@@ -3,6 +3,9 @@
 
 # boot strap libs
 import sys, os
+reload(sys)  # Reload does the trick!
+sys.setdefaultencoding('UTF8')
+
 
 pathname = os.path.abspath( os.path.dirname(sys.argv[0]) )
 LIB_PATH =  pathname + '/../lib/'
@@ -128,8 +131,8 @@ if __name__ == '__main__':
     b.add_argument( '--ip', nargs="*" )
     b.add_argument( '--mac', nargs="*" )
 
-    for i in ( 'dump', 'upload' ):
-        c = subparsers.add_parser( i, help='output final data to %s format' % (i,) )
+    for i in ( 'dump', 'commit', 'upload' ):
+        c = subparsers.add_parser( i, help='output data to %s' % (i,) )
         c.set_defaults( action=i )
         c.add_argument( 'nodenames', nargs="*" )
         c.add_argument( '--regex', default=False, action='store_true' )
@@ -183,6 +186,11 @@ if __name__ == '__main__':
         subnets = get_subnets( kwargs['accounts']['support']['subnets'])
         tsv( mongo, subnets=subnets, nodenames=kwargs['nodenames'], db_name=OUTPUT_DB, pre_collate=kwargs['nogen'], fields=OUTPUT_FIELDS, null_char=kwargs['null_char'], force=kwargs['force'], content_remaps=kwargs['content_remaps'] )
 
+    elif kwargs['action'] == 'commit':
+        subnets = get_subnets( kwargs['accounts']['support']['subnets'])
+        commit( mongo, subnets=subnets, nodenames=kwargs['nodenames'], db_name=OUTPUT_DB, pre_collate=kwargs['nogen'], fields=OUTPUT_FIELDS, null_char=kwargs['null_char'], force=kwargs['force'], content_remaps=kwargs['content_remaps'] )
+
+
     ###
     # upload the merged data
     ###
@@ -190,6 +198,7 @@ if __name__ == '__main__':
         chunk = 100
         m = 0
         data = { 'records': [] }
+        subnets = get_subnets( kwargs['accounts']['support']['subnets'])
         for n,i in enumerate( flat( mongo, subnets=subnets, nodenames=kwargs['nodenames'], db_name=OUTPUT_DB, pre_collate=kwargs['nogen'], fields=OUTPUT_FIELDS, null_char=kwargs['null_char'], force=kwargs['force'], content_remaps=kwargs['content_remaps'], header_remaps={
             'serial': 'u_serial',
             'PC': 'u_pc',
