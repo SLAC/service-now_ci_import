@@ -70,6 +70,10 @@ class Casper( Data ):
                     del out['ip_address']
                     out['port']['dhcp'] = True
         
+                # stupid casper sometimes doesn't contain a model
+                if out['model'] == '':
+                    del out['model']
+        
                 # fake pc number for now
                 m = search('(?P<asset>PC\d{5})',out['nodename'])
                 if m:
