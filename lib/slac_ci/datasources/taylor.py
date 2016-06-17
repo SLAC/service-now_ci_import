@@ -77,7 +77,7 @@ class Taylor(Data):
             out = {
                 'nodename': d['HOSTNAME'].upper(),
                 'ip_address': d['IPADDR'] if 'IPADDR' in d else None,
-                'serial': d['SERIAL'] if 'SERIAL' in d else None,
+                'serial': d['SERIAL'].upper() if 'SERIAL' in d else None,
                 'model': d['MODEL'] if 'MODEL' in d else None,
                 'manufacturer': d['BIOSVENDOR'] if ('BIOSVENDOR' in d and not d['BIOSVENDOR'] in ( '<BAD INDEX>', 'American Megatrends Inc.', 'Intel Corporation') ) else None,
                 'os': {
