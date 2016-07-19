@@ -619,14 +619,26 @@ def collapse( l ):
     
     return this
     
-    
+def determine_collation_fields( *fields ):
+    out = []
+    for f in fields:
+        a = f.split(':')
+        if not a[0] in out:
+            out.append( a[0] )
+    return out
+ 
 def collate_item( item, null_char='',
-        fields=( 'device_type', 'is_vm', 'port', 'nodename', 'subnet', 'user', 'admin', 'custodian', 'owner', 'disk', 'memory', 'cpu', 'manufacturer', 'model', 'serial', 'PC', 'PO', 'location', 'warranty', 'os', 'updated_at' ),
+        fields=( 'device_type', 'is_vm', 'port', 'nodename', 'subnet', 'user', 'admin', 'custodian', 'owner', 'disk', 'memory', 'cpu', 'manufacturer', 'model', 'serial', 'PC', 'PO', 'capital_cost', 'location', 'warranty', 'os', 'service_date', 'updated_at' ),
+        output_fields=(),
         remap={}
     ):
     
     """ from the merge() output, flatten the values for each field and determine if there are any conflicts """
     summary = {}
+
+    if len( output_fields ):
+        fields = determine_collation_fields( *output_fields )
+
     # logging.error("FIELD: %s" % (item,))
     for s in fields:
 
@@ -665,6 +677,16 @@ def collate_item( item, null_char='',
             if len(values):
                 dt = max( values )
                 # logging.error("DATETIME: %s (%s)" % (dt,summary[s]['data']['value'].keys()))
+                summary[s]['data']['value'] = {}
+                summary[s]['data']['value'][dt] = [ 'post', ]
+        elif s == 'service_date':
+            # use earliest
+            try:
+                values = [ n for n in summary[s]['data']['value'].keys() if n ]
+            except:
+                values = []
+            if len(values):
+                dt = min( values )
                 summary[s]['data']['value'] = {}
                 summary[s]['data']['value'][dt] = [ 'post', ]
 

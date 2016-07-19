@@ -143,6 +143,10 @@ testing:
       field:
         - port
         - ip_address
+    - db: netdb
+      field:
+        - port
+        - mac_address
     # - db: netdb
     #   field:
     #     - nodename
@@ -161,3 +165,18 @@ testing:
     - db: rackwise
       field:
         - PC
+    - db: rackwise
+      field:
+        - nodename
+    # - db: sccm
+    #   field:
+    #     - nodename
+    # - db: taylor
+    #   field:
+    #     - nodename
+    # - db: casper
+    #   field:
+    #     - nodename
+    # - db: netdb
+    #   field:
+    #     - nodename

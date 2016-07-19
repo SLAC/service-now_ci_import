@@ -57,7 +57,7 @@ class Rackwise(ODBC):
         """):
 
             d['nodename'] = sub( '\n', '; ', d['nodename'].upper() )
-
+            
             # pc and po
             for i in ( 'pc', 'po' ):
                 n = 5 if i == 'pc' else 6
@@ -73,7 +73,7 @@ class Rackwise(ODBC):
                 d['serial'] = d['serial'].upper().replace("\"", '')
 
             # cost
-            d['capital_cost'] = float(d['capital_cost']) if d['capital_cost'] else None
+            d['capital_cost'] = '%.2f' % round(d['capital_cost'],2) if d['capital_cost'] else None
 
             # device_type
             if d['device_type'] in ( 'Other - Networking', ):
@@ -102,13 +102,29 @@ class Rackwise(ODBC):
             if 'building' in d['location']:
                 d['location']['building'] = 'B'+d['location']['building']
 
-            d['warranty'] = {}
-            if d['warranty_start']:
-                d['warranty']['start'] = d['warranty_start']
-                del d['warranty_start']
-            if d['warranty_end']:
-                d['warranty']['end'] = d['warranty_end']
-                del d['warranty_end']
+            d['warranty'] = {
+                'start': d['warranty_start'],
+                'end': d['warranty_end'],
+                'detail': d['warrantydetail']
+            }
+            d['service_date'] = d['warranty_start']
+            del d['warranty_start']
+            del d['warranty_end']
+            del d['warrantydetail']
+            
+            d['customer'] = {
+                'name': d['customername'],
+                'description': d['customerdescription']
+            }
+            del d['customername']
+            del d['customerdescription']
+            
+            d['lease'] = {
+                'start': d['leasestartdate'],
+                'end': d['leaseenddate'],
+            }
+            del d['leasestartdate']
+            del d['leaseenddate']
             
             # print "%s" % d
             yield d

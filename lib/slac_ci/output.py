@@ -216,6 +216,7 @@ def report_item( db, search,
         order_by=('nodename.value',ASCENDING), 
         unique_fields=( 'port:ip_address', 'port:mac_address', 'port:hostname', 'port:dhcp', 'subnet' ),
         ignore_fields=(),
+        min_value_fields=( 'service_date', ),
         max_value_fields=( 'updated_at', ),
         multivalue_fields=( 'admin_group', '_ports_', 'admin:username', 'admin:id', 'admin:lastname' ),
         content_remaps={}
@@ -308,6 +309,10 @@ def report_item( db, search,
                     # logging.error("MAX: %s" % (seen[n][f],))
                     if len( seen[n][f] ):
                         dt = max(seen[n][f])
+                        seen[n][f] = [dt,]
+                for f in min_value_fields:
+                    if f in seen[n] and len( seen[n][f] ):
+                        dt = min(seen[n][f])
                         seen[n][f] = [dt,]
             
             # mark in db that this has been used
@@ -511,7 +516,7 @@ def collate( cursor, sort_by, fields=[], subnets={}, null_char='', content_remap
         
         logging.debug("")
         logging.debug( "collating %s" % (i,) )
-        for summary, ignore_done in collate_item( i, remap=content_remaps ):
+        for summary, ignore_done in collate_item( i, output_fields=fields, remap=content_remaps ):
             # logging.debug("summarising %s" % summary )
 
             # merge subnet
@@ -771,7 +776,7 @@ def tsv( mongo, extra_headers=['state','number_errors','error_type','errors'], n
                 # logging.debug(" f: %s\t %s\t%s" % (f,v,type(v)))
                 if v:
                     # try:
-                    if isinstance( v, datetime.datetime ):
+                    if isinstance( v, datetime.datetime ) or isinstance( v, float ):
                         v = str(v)
                     v = v.encode('latin-1','ignore')
                     # except:

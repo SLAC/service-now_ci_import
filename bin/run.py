@@ -43,7 +43,7 @@ LOG = logging.getLogger(__name__)
 DB_NAMES = []
 OUTPUT_DB = 'testing'
 
-OUTPUT_FIELDS = [ 'nodename', 'device_type', 'is_vm', 'port:hostname', 'port:dhcp', 'port:ip_address',  'port:mac_address', 'user:id', 'user:username', 'user:directorate', 'custodian:id', 'custodian:username', 'owner', 'os:name', 'os:version', 'manufacturer', 'model', 'serial', 'PC', 'PO', 'location:building', 'location:room', 'location:rack', 'location:ru', 'cpu:cores', 'memory', 'disk:capacity', 'warranty:start', 'warranty:end', 'updated_at' ]
+OUTPUT_FIELDS = [ 'nodename', 'device_type', 'is_vm', 'port:hostname', 'port:dhcp', 'port:ip_address',  'port:mac_address', 'subnet', 'user:id', 'user:username', 'user:directorate', 'custodian:id', 'custodian:username', 'owner', 'os:name', 'os:version', 'manufacturer', 'model', 'serial', 'PC', 'PO', 'capital_cost', 'location:building', 'location:room', 'location:rack', 'location:ru', 'cpu:cores', 'memory', 'disk:capacity', 'warranty:start', 'warranty:end', 'service_date', 'updated_at' ]
 
 
 def update_db( mongo, kwargs ):

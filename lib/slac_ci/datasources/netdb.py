@@ -32,7 +32,9 @@ class Netdb( Data ):
 
     
         for name, doc in docs.iteritems():
-            # logging.error("DOC: %s" % (doc,))
+            
+            LOG.info("DOC: %s" % (doc,))
+            
             ports = []
             for i in doc['interfaces']:
                 p = {
@@ -43,8 +45,10 @@ class Netdb( Data ):
                     for ip in i['ipnum']:
                         p['ip_address'] = ip
                         p['hostname'] = i['name'].upper()
-                        ports.append( p )
+                ports.append( p )
+            # LOG.info(" + ports: %s" % (ports,))
     
+            # location
             loc = {
                 'building': doc['bldg'] if not doc['bldg'] == 'Not found' else None,
                 'room': str(doc['room']) if not doc['room'] == 'UNKNOWN' else None
@@ -58,11 +62,16 @@ class Netdb( Data ):
                         loc[k] = v
                     except:
                         pass
+            elif loc['room'] and '210-' in str(loc['room']):
+                a = loc['room'].split('-')
+                loc['room'] = a.pop(0).strip()
+                loc['rack'] = a.pop(0).strip()
+            # LOG.info(" + loc: %s" % (loc,))
 
             # usernames
+            username = None
             try:
                 fullname = None
-                username = None
                 fullname, username = doc['users'][0].split( ' (' )
                 username = username[:-1] # strip )
             except:
@@ -70,9 +79,9 @@ class Netdb( Data ):
             user = {}
             # print "  -> %s " % (users_by_username, )
             if self.users and username in self.users.by_username:
-                # logging.error("username: %s\t%s" % (username,username in users_by_username))
                 user = self.users.by_username[username]
                 # r['user']['username'] = r['username'].lower()
+            # LOG.info(" + username: %s, %s\t%s" % (user,username,username in self.users.by_username))
      
             # OS
             m = search( '^(?P<name>.*) (?P<version>\d+\.\d+(\.\d+)?)', doc['os'][0] )
@@ -99,6 +108,7 @@ class Netdb( Data ):
                     branding = m.groupdict()
                     branding['device_type'] = branding['device_type'].lower()
                 # logging.error(" OT: %s" % branding)
+
             this = {
                 'id': doc['id'],
                 'nodename': str(doc['node']).upper(),
@@ -113,10 +123,10 @@ class Netdb( Data ):
                 'user': user,
                 'admin_group': admin,
             }
+            
         
             if this['model'] in ( 'System Configuration: Not Available    X4500', ):
                 del this['model']
-        
         
             # assets
             if 'tags' in doc:
@@ -154,6 +164,6 @@ class Netdb( Data ):
                 this['port'] = y
                 if '_id' in this:
                     del this['_id']
-                # logging.debug(">> %s" % (o,))
+                # LOG.info("  > %s" % (this,))
                 yield this
     

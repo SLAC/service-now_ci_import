@@ -24,10 +24,10 @@ class Bis( Oracle ):
             A.PROFILE_ID as profile_id,
             A.SERIAL_ID as serial,
             A.MANUFACTURER as manufacturer,
-            A.ACQUISITION_DT as purchased,
+            A.ACQUISITION_DT as service_date,
             C.DOCUMENT_ID as PO,
             C.EFFDT  as first_seen,
-            cost.total_cost as cost,
+            cost.total_cost as capital_cost,
             b.deptid as department_id
         FROM PS_ASSET A, PS_ASSET_CUSTODIAN B, PS_ASSET_LOCATION C, PS_LOCATION_TBL D, (SELECT ASSET_ID, TOTAL_COST FROM PS_SL_ASSETCOST_VW WHERE BUSINESS_UNIT = 'SLAC') cost
             WHERE B.EFFDT = (SELECT MAX(EFFDT) FROM PS_ASSET_CUSTODIAN WHERE ASSET_ID = b.ASSET_ID AND EFFDT <= SYSDATE AND BUSINESS_UNIT = b.business_unit) and A.asset_id = cost.asset_id(+) and A.asset_id = b.asset_id and c.business_unit = a.business_unit and a.business_unit = b.business_unit and c.business_unit = 'SLAC' AND c.asset_id = b.asset_id and A.ASSET_STATUS IN ('E','I') AND C.EFFDT = (SELECT MAX(EFFDT) FROM PS_ASSET_LOCATION WHERE ASSET_ID = c.ASSET_ID AND EFFDT <= SYSDATE AND BUSINESS_UNIT = C.BUSINESS_UNIT) and d.location(+) = c.location and d.setid(+) = c.business_unit
@@ -124,6 +124,9 @@ class Bis( Oracle ):
                 else:
                     d['location'] = 'B'+d['location'].strip()
                 d['location'] = { 'building': d['location'] }
+
+            # set capital cost to string
+            d['capital_cost'] = "%.2f" % round(d['capital_cost'],2)
 
             yield d
     
