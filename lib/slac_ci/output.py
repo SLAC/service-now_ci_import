@@ -210,6 +210,27 @@ def format_errors( errors, order=( 'serial', 'PC', 'nodename', 'manufacturer', '
 
 
 
+def format_errors_json( errors ):
+    '''
+    output error suitable for mongo searching
+    '''
+    these_errors = {}
+    if errors:
+        logging.error("ERRORS %s"%(errors,))
+        for k,v in errors.iteritems():
+            these_errors[k] = {}
+            for field, o in v.iteritems():
+                if not field in these_errors[k]:
+                    these_errors[k][field] = []
+                for this_value, databases in o.iteritems():
+                    this = {
+                        field: this_value,
+                        'datasource': databases 
+                    }
+                    these_errors[k][field].append( this )
+    #LOG.error( "--> %s" % (these_errors,) )
+    return these_errors
+
 def report_item( db, search, 
         fields=(), 
         subnets={}, 
@@ -889,7 +910,7 @@ def commit( mongo, collection_name='final', extra_headers=['state','number_error
                         if not this == key:
                             errors[e][k][this] = errors[e][k][key]
                             del errors[e][k][key]
-        item['errors'] = errors
+        item['errors'] = format_errors_json( errors )
         if state:
             good = good + 1
             item['state'] = 'good'

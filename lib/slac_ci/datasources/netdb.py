@@ -33,7 +33,7 @@ class Netdb( Data ):
     
         for name, doc in docs.iteritems():
             
-            LOG.info("DOC: %s" % (doc,))
+            #LOG.info("DOC: %s" % (doc,))
             
             ports = []
             for i in doc['interfaces']:
@@ -112,7 +112,7 @@ class Netdb( Data ):
             this = {
                 'id': doc['id'],
                 'nodename': str(doc['node']).upper(),
-                'location': loc,
+                #'location': loc,
                 "status": doc['state'],
                 'manufacturer': branding['make'] if 'make' in branding else None,
                 'model': branding['model'] if 'model' in branding else None,

@@ -159,6 +159,8 @@ class Sccm(ODBC):
                 elif r['ip_address'] == '0.0.0.0' or r['ip_address'].startswith( '169.254.' ) or r['ip_address'].startswith( '192.168.' ) or r['ip_address'].startswith('10.') or r['ip_address'].startswith('128.'):
                     del r['ip_address']
                     del r['dhcp']
+                elif r['ip_address'] == '131.225.79.31':
+                    del r['ip_address']
 
             for x in ( 'ip_address', 'mac_address', 'dhcp' ):
                 if x in r:

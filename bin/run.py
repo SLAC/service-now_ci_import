@@ -19,6 +19,7 @@ from slac_ci.collate import merge
 # old
 from slac_ci.output import *
 
+from slac_ci.util import get_file_contents
 
 from yaml import load, dump
 try:
@@ -195,6 +196,10 @@ if __name__ == '__main__':
     # upload the merged data
     ###
     elif kwargs['action'] == 'upload':
+
+        kwargs['accounts']['upload']['servicenow']['password'] = get_file_contents( kwargs['accounts']['upload']['servicenow']['password'] )
+        #logging.error( "%s, %s, %s" % (kwargs['accounts']['upload']['servicenow']['url'], kwargs['accounts']['upload']['servicenow']['user'], kwargs['accounts']['upload']['servicenow']['password']  ) )
+
         chunk = 100
         m = 0
         data = { 'records': [] }
@@ -217,6 +222,7 @@ if __name__ == '__main__':
         }) ):
         
             m = m + 1
+            #print "%s" % ( i )
             data['records'].append( i )
             
             if m >= chunk:

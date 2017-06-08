@@ -18,13 +18,13 @@ support:
     
   subnets:
     user: ptolemy
-    password: /u/sf/ytl/private/ptolemy.password
+    password: /opt/service-now_ci_import/etc/passwords/ptolemy.password
     host: net-graphite01
     db: ptolemy_production
 
   users:
-    user: cando_anyuser
-    password: /u/sf/ytl/net/netmon/lanmon/etc/cando.read
+    user: dataver
+    password: /opt/service-now_ci_import/etc/passwords/oracle.password
     host: slac-tcp
     port: 1521
     sid: SLAC
@@ -43,30 +43,32 @@ assets:
       - nicinfo
   
   sccm:
-    user: SLAC\ytl
-    password: /u/sf/ytl/private/windows.password
+    user: SLAC\snmaint
+    password: /opt/service-now_ci_import/etc/passwords/snmaint.password
     dsn: sccm
   
   ptolemy:
     user: ptolemy
-    password: /u/sf/ytl/private/ptolemy.password
+    password: /opt/service-now_ci_import/etc/passwords/ptolemy.password
     host: net-graphite01
     db: ptolemy_production
 
   arps:
     user: ptolemy
-    password: /u/sf/ytl/private/ptolemy.password
+    password: /opt/service-now_ci_import/etc/passwords/ptolemy.password
     host: net-graphite01
     db: ptolemy_production
   
   rackwise:
-    user: SLAC\ytl
-    password: /u/sf/ytl/private/windows.password
+    #user: SLAC\ytl
+    #password: /u/sf/ytl/private/windows.password
+    user: SLAC\snmaint
+    password: /opt/service-now_ci_import/etc/passwords/snmaint.password
     dsn: rackwise
   
   bis:
-    user: netdb
-    password: /u/sf/ytl/private/netdb.password
+    user: dataver
+    password: /opt/service-now_ci_import/etc/passwords/oracle.password
     host: slac-tcp
     port: 1521
     sid: SLAC
@@ -78,18 +80,18 @@ assets:
 
   casper:
     uri: https://casper.slac.stanford.edu:8443
-    user: ytl-api
-    password: /u/sf/ytl/private/casper.password
+    user: snmaint
+    password: /opt/service-now_ci_import/etc/passwords/casper.password
 
 
 ###
 # service now
 ###
-uploads:
+upload:
   
-  service-now:
+  servicenow:
     url: https://slacdev.service-now.com/u_ci_import.do?JSONv2&sysparm_action=insert
     #url: https://slactest.service-now.com/u_ci_import.do?JSONv2&sysparm_action=insert
     #url: https://slacprod.service-now.com/u_ci_import.do?JSONv2&sysparm_action=insert
     user: wsimport
-    password: /u/sf/ytl/private/service-now.password
+    password: /opt/service-now_ci_import/etc/passwords/service-now.password
