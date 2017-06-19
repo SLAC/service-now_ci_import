@@ -126,7 +126,10 @@ class Bis( Oracle ):
                 d['location'] = { 'building': d['location'] }
 
             # set capital cost to string
-            d['capital_cost'] = "%.2f" % round(d['capital_cost'],2)
+            try:
+                d['capital_cost'] = "%.2f" % round(d['capital_cost'],2)
+            except:
+                LOG.error("error parsing capital cost: %s" % (d['capital_cost']))
 
             yield d
     
