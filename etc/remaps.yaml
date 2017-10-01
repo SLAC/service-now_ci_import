@@ -902,9 +902,8 @@ owner:
     SLAC/SSRL: SSRL
 
 os:name:
-  
+    MICROSOFT WINDOWS: Microsoft Windows
     WINDOWS: Microsoft Windows
-
     WINDOWS-2000: Microsoft Windows
     WINDOWS-2003: Microsoft Windows
     WINDOWS-2008: Microsoft Windows
@@ -926,23 +925,29 @@ os:name:
     MICROSOFT WINDOWS SERVER 2008 R2 ENTERPRISE: Microsoft Windows
     MICROSOFT WINDOWS SERVER 2008 R2 STANDARD: Microsoft Windows
     MICROSOFT WINDOWS SERVER 2012 DATACENTER: Microsoft Windows
-    MICROSOFT WINDOWS SERVER 2012 R2 STANDARD: Microsoft Windows
     MICROSOFT WINDOWS SERVER 2012 STANDARD: Microsoft Windows
+    MICROSOFT WINDOWS SERVER 2012 R2 DATACENTER: Microsoft Windows
+    MICROSOFT WINDOWS SERVER 2012 R2 STANDARD: Microsoft Windows
+    WINDOWS 2012 R2 SERVER: Microsoft Windows
+    MICROSOFT WINDOWS SERVER 2016: Microsoft Windows
+    MICROSOFT WINDOWS SERVER 2016 STANDARD: Microsoft Windows
     MICROSOFT WINDOWS XP PROFESSIONAL: Microsoft Windows
     MICROSOFT(R) WINDOWS(R) SERVER 2003 STANDARD X64 EDITION: Microsoft Windows
     MICROSOFT(R) WINDOWS(R) SERVER 2003, STANDARD EDITION: Microsoft Windows
     MICROSOFT(R) WINDOWS(R) XP PROFESSIONAL X64 EDITION: Microsoft Windows
     MICROSOFT® WINDOWS SERVER® 2008 ENTERPRISE: Microsoft Windows
     MICROSOFT® WINDOWS VISTA™ BUSINESS: Microsoft Windows
-    
+    MICROSOFT WINDOWS 10 ENTERPRISE: Microsoft Windows
+    WINDOWS 10: Microsoft Windows
     
     MAC OS X: Apple Mac OSX
-    APPLE MAC OS: Apple Mac OSX 
-    
-    
+    APPLE MAC OS: Apple Mac OSX
+    MAC OS: Apple Mac OSX
+   
     # HP-JETDIRECT: builtin
     # PROPRIETARY: builtin
     # XEROX-PRINTER: builtin
+    REDHAT ENTERPRISE LINUX: Redhat Enterprise Linux
     RHEL: Redhat Enterprise Linux
     # LINUX: Redhat Enterprise Linux
     SUN: Solaris
