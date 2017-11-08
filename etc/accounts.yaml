@@ -90,8 +90,8 @@ assets:
 upload:
   
   servicenow:
-    url: https://slacdev.service-now.com/u_ci_import.do?JSONv2&sysparm_action=insert
+    #url: https://slacdev.service-now.com/u_ci_import.do?JSONv2&sysparm_action=insert
     #url: https://slactest.service-now.com/u_ci_import.do?JSONv2&sysparm_action=insert
-    #url: https://slacprod.service-now.com/u_ci_import.do?JSONv2&sysparm_action=insert
+    url: https://slacprod.service-now.com/u_ci_import.do?JSONv2&sysparm_action=insert
     user: wsimport
     password: /opt/service-now_ci_import/etc/passwords/service-now.password
