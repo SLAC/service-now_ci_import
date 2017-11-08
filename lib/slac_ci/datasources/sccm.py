@@ -179,9 +179,12 @@ class Sccm(ODBC):
                 if x in r:
                     if not 'updated_at' in r:
                         r['updated_at'] = r[x]
-                    if r[x] > r['updated_at']:
+                    if r['updated_at'] and r[x] > r['updated_at']:
                         r['updated_at'] = r[x]
                     del r[x]
+
+            if not r['first_seen'] == '':
+                r['first_seen'] = r['first_seen']
 
             # r['user'] = nameify( r['full_name'] )
         
