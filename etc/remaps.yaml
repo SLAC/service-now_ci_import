@@ -6,11 +6,14 @@ model:
     HP Z400 WORKSTATION: HP Z400 Workstation
     WORKSTATION Z400: HP Z400 Workstation
     
-    Mondopad: MONDOPAD
-    INF7021: MONDOPAD
-    INF8022: MONDOPAD
-    INF8521: MONDOPAD
-    SKYLAKE: MONDOPAD
+    MONDOPAD: Mondopad
+    INF7021: Mondopad
+    INF8022: Mondopad
+    INF8521: Mondopad
+    SKYLAKE: Mondopad
+    
+    HP ELITEBOOK FOLIO 9480M: EliteBook Folio 9480m
+    ELITE BOOK FOLIO 9480M: EliteBook Folio 9480m
     
     VMWARE VIRTUAL PLATFORM: VMWare
     VMWARE7,1: VMWare
@@ -208,13 +211,16 @@ model:
     PRECISION M4600: Precision M4600
     PRECISION M4700: Precision M4700
     PRECISION M4800: Precision M4800
-    DELL PRECIONS 4800: Precision M480
+    PRECISION M480: Precision M4800
+    DELL PRECIONS 4800: Precision M4800
     
     PRECISION R5400: Precision R5400
     PRECISION T5400: Precision T5400
     PRECISION T5400N: Precision T5400
     PRECISION WORKSTATION T5400: Precision T5400
      
+    5510: Precision T5500
+    PRECISON 5510: Precision T5500
     PRECISION T5500: Precision T5500
     PRECISION T5500E: Precision T5500
     PRECISION T5500N: Precision T5500
@@ -222,6 +228,7 @@ model:
     PRECISION WORKSTATION T5500: Precision T5500
     PRECISION MOBILE 5510: Precision 5510
     PRECISION M5510: Precision 5510
+    PRECISON 5510: Precision 5510
     PRECISION 5510: Precision 5510
     5510: Precision 5510
     PRECISION T5520N: Precision T5520N
@@ -254,6 +261,7 @@ model:
     PRECISION T7610: Precision T7610
     PRECISION TOWER 7610: Precision T7610
     PRECISION 7710: Precision 7710
+    PRECISION MOBILE 7710: Precision 7710
     PRECISION 17 7000: Precision 7710
     PRECISION 7810: Precision T7810
     PRECISION T7810: Precision T7810
@@ -322,9 +330,12 @@ model:
     OPTIPLEX 9020 MICRO: OptiPlex 9020
     OPTIPLEX 9020M: OptiPlex 9020
     OPTIPLEX 9020M MICRO: OptiPlex 9020
+    OPTIPLEX 9020M BTX: OptiPlex 9020
     OPTIPLEX 9020 MICRO BTX: OptiPlex 9020
+    OPTIPLEX 9020 MICRO  : OptiPlex 9020
     
     GX150: OptiPlex GX150
+    OPTIPLEX GX150: OptiPlex GX150
     150: OptiPlex GX150
     OPTIPLEX GX240: OptiPlex GX240
     GX260: OptiPlex GX260
@@ -405,6 +416,7 @@ model:
     7470: Latitude E7470
     E7470: Latitude E7470
     LATITUDE E7480: Latitude E7480
+    LATITUDE 7480: Latitude E7480
     E7480: Latitude E7480
     LATITUDE 7480: Latitude E7480
     XT3: Latitude XT3
@@ -417,6 +429,7 @@ model:
     DIMENSION XPS L321X: XPS L321X
     XPSPRO: XPS L321X
     XPS L321X: XPS L321X
+    XPS 13 9360: XPS L322X
     XPS13 9333: XPS L322X
     DELL SYSTEM XPS L322X: XPS L322X
     ULTRABOOK XPS-13: XPS L322X
@@ -436,6 +449,7 @@ model:
     XPS L521X:XPS L521X
     XPS-15: XPS L521X
     XPS 15: XPS L521X
+    XPS15: XPS L521X
     DIMENSION XPS 15: XPS L521X
     XPS 15 9530: XPS L521X
     XPS 15 9550: XPS L521X
@@ -451,6 +465,7 @@ model:
     SURFACE PRO 3: Surface Pro 3
     SURFACE PRO4: Surface Pro 4
     SURFACE PRO 4: Surface Pro 4
+    SURFACE PRO 4 1TB: Surface Pro 4
     SURFACE PRO4 I5 256GB: Surface Pro 4
     SURFACE BOOK: Surface Book
     SURFACE BOOK I7: Surface Book
@@ -497,6 +512,7 @@ model:
     MACBOOKPRO5,3: Macbook Pro
     MACBOOK PRO: Macbook Pro
     
+ 
     MACBOOKPRO 13": Macbook Pro 13"
     MACBOOK PRO 13": Macbook Pro 13"
     MACBOOKPRO9,2: Macbook Pro 13"
@@ -505,6 +521,7 @@ model:
     MACBOOKPRO8,1: Macbook Pro 13"
     13-INCH RETINA MACBOOK PRO (LATE 2013): Macbook Pro 13"
     13-INCH MACBOOK PRO (2011): Macbook Pro 13"
+    13-INCH RETINA MACBOOK PRO (NID 2017): Macbook Pro 13"
     13-INCH RETINA MACBOOK PRO (LATE 2012): Macbook Pro 13"
     13-INCH MACBOOK PRO (MID 2009): Macbook Pro 13"
     13-INCH MACBOOK PRO (EARLY 2015): Macbook Pro 13"
@@ -603,7 +620,7 @@ model:
     367927U: Thinkpad Tablet 2
     THINKPAD TABLET 2: Thinkpad Tablet 2
     
-    KJ379AA-ABA A6400F: Pavilion 6400F
+    KJ379AA-ABA A6400F: Pavilion F
     A6400F PAVILION: Pavilion 6400F
     
     HP COMPAQ NX6325 (EN191UA#ABA): NX6325
@@ -659,6 +676,8 @@ model:
     STOREDGE 6140: StorEdge 6140
 
     BROCADE 5100: 5100
+    
+    STK2MV64CC: STK2MV64CC
     
     SC815TQ: X9SRW-F
     
@@ -737,6 +756,9 @@ manufacturer:
     SUN MICROSYSTEMS, INC: Sun Microsystems
     CISCO: Cisco Systems
     CISCO SYSTEMS: Cisco Systems
+    INTEL CORP: Intel
+    INTEL CORPORATION: Intel
+    INTEL: Intel
     # AMERICAN MEGATRENDS INC.: Sun Microsystems
     PHOENIX TECHNOLOGIES LTD.: Sun Microsystems
     DELL COMPUTER CORPORATION: Dell
