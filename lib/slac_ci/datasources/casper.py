@@ -28,7 +28,7 @@ class Casper( Data ):
         headers = {'content-type': 'application/json', 'Accept': 'application/json' }
         auth = HTTPBasicAuth( self.user, self.password )
         r = requests.get( url, headers=headers, auth=auth )
-        
+        #LOG.error("R: %s" % r.json() ) 
         try:
             data = r.json()
 
@@ -36,9 +36,11 @@ class Casper( Data ):
             for c in [ d['id'] for d in data['computers'] ]:
                 # request in seriaal
                 url = '%s%s/%s'% (self.uri, '/JSSResource/computers/id', c)
-                # logging.error(" URL %s" % (url,))
-                d = requests.get( url , headers=headers, auth=auth ).json()['computer']
-                # logging.error("  R: %s" % (json.dumps(d),))
+                #LOG.error(" URL %s" % (url,))
+                # d = requests.get( url , headers=headers, auth=auth ).json()['computer']
+                response = requests.get( url, headers=headers, auth=auth )
+                d = response.json()['computer']
+                #LOG.error("  R: %s" % (d,))
                 out = {
                     'nodename': d['general']['name'].upper(),
                     'ip_address': d['general']['ip_address'],
@@ -65,7 +67,10 @@ class Casper( Data ):
                 if not d['general']['last_contact_time'] == '':
                     # LOG.warn("DATE: %s" % (d['general']['last_contact_time'],))
                     out['updated_at'] = datetime.strptime(d['general']['last_contact_time'], "%Y-%m-%d %H:%M:%S") 
-        
+                # TODO: UTC date
+                if not d['general']['initial_entry_date_utc'] == '':
+                    out['first_seen'] = datetime.strptime(d['general']['initial_entry_date_utc'].split('-0700').pop(0).split('.').pop(0), "%Y-%m-%dT%H:%M:%S")
+
                 if self.dhcp and 'ip_address' in out and out['ip_address'] in self.dhcp.dhcp:
                     del out['ip_address']
                     out['port']['dhcp'] = True
@@ -75,10 +80,13 @@ class Casper( Data ):
                     del out['model']
         
                 # fake pc number for now
-                m = search('(?P<asset>PC\d{5})',out['nodename'])
-                if m:
-                    out['PC'] = m.group('asset')
-                    LOG.debug("inferred pc number %s" % (out['PC']))
+                if not d['general']['asset_tag'] == '':
+                    out['PC'] = d['general']['asset_tag']
+                else:
+                    m = search('(?P<asset>PC\d{5})',out['nodename'])
+                    if m:
+                        out['PC'] = m.group('asset')
+                        LOG.debug("inferred pc number %s" % (out['PC']))
         
                 # add alt mac
                 yield out
