@@ -5,6 +5,8 @@ model:
     
     HP Z400 WORKSTATION: HP Z400 Workstation
     WORKSTATION Z400: HP Z400 Workstation
+    HP Z4 G4 WORKSTATION: HP Z4 G4 Workstation
+    Z4 G4 WORKSTATION: HP Z4 G4 Workstation
     
     MONDOPAD: Mondopad
     INF7021: Mondopad
@@ -138,6 +140,9 @@ model:
     POWEREDGE C6100 - LFF: PowerEdge C6100
     POWEREDGE C6100 - SFF: PowerEdge C6100
     6100: PowerEdge C6100
+    POWEREDGE R430: PowerEdge R430
+    POWEREDGE R640: PowerEdge R640
+    POWEREDGE R740: PowerEdge R740
 
     PRECISION M90: Precision M90
     PRECISION WORKSTATION 340: Precision 340 
@@ -270,6 +275,38 @@ model:
     PRECISION T7910: Precision T7910
     PRECISION TOWER 7910: Precision T7910
     
+    MOBILE PRECISION 5510: Precision 5510
+    PRECISION M5520: Precision M5520
+    PRECISION 5520: Precision M5520
+    PRECISION M7520: Precision M7520
+    PRECISION 7520: Precision M7520
+    PRECISION TOWER 3420SFF: Precision T3420
+    PRECISION 3620: Precision T3620
+    PRECISION T3620MT: Precision T3620
+    PRECISION 3630: Precision T3630
+    PRECISION 3630 TOWER: Precision T3630
+    PRECISION T3630: Precision T3630
+    PRECISION T3630 4.3GHZ: Precision T3630
+    PRECISCION T3420: Precision T3400
+    PRECISION  T5810: Precision T5810
+    PRECISION 3620: Precision T3620
+    PRECISION 3630 TOWER: Precision T3630
+    PRECISION 3630: Precision T3630
+    PRECISION 5530 2-IN-1: Precision 5530
+    PRECISION 5530: Precision 5530
+    PRECISION 5810 TOWER: Precision T5810
+    PRECISION 5810: Precision T5810
+    PRECISION 5820 TOWER: Precision T5820
+    PRECISION 5820: Precision T5820
+    PRECISION T5820: Precision T5820
+    PRECISION T5820 : Precision T5820
+    PRECISION 5820 TOWER: Precision T5820
+    PRECISION T7820: Precision T7820
+    PRECISION 7820 TOWER: Precision T7820
+    PRECISION 7920 TOWER: Precision T7920
+    PRECISION 7920: Precision T7920
+    PRECISION T7920: Precision T7920
+
     OPTIPLEX 380: OptiPlex GX380
     OPTIPLEX GX380: OptiPlex GX380
     GXA: OptiPlex GX380
@@ -360,7 +397,17 @@ model:
     OPTIPLEX GX745: OptiPlex GX745
     GX755: OptiPlex GX755
     
-
+    OPTIPLEX 3046: OptiPlex 3046
+    OPTIPLEX 3046 SSF: OptiPlex 3046
+    OPTIPLEX 5050SFF: OptiPlex 5050
+    OPTIPLEX 5050: OptiPlex 5050
+    OPTIPLEX 5060: OptiPlex 5060
+    OPTIPLEX 7040 MIN TOWER: OptiPlex 7040MT
+    OPTIPLEX 7040SFF: OptiPlex 7040MT
+    OPTIPLEX 9020 MICRO  : OptiPlex 9020
+    OPTIPLEX 9020MICRO: OptiPlex 9020
+    
+    COMPUTE STICK: STK2MV64CC
     
     C800 LATITUDE: Latitude C800
     
@@ -397,6 +444,7 @@ model:
     LATITUDE E6500: Latitude E6500
     LATITUDE E6510: Latitude E6510
     LATITUDE E6520: Latitude E6520
+    E6420: Latitude E6420
     LATITUDE E6530: Latitude E6530
     LATITUDE E6540: Latitude E6540
     LATITUDE 6500: Latitude E6500
@@ -419,8 +467,14 @@ model:
     LATITUDE 7480: Latitude E7480
     E7480: Latitude E7480
     LATITUDE 7480: Latitude E7480
+    E7490: Latitude E7490
+    LATITUDE 7490: Latitude E7490
+    LATITUDE E7490: Latitude E7490
+    7490: Latitude E7490
     XT3: Latitude XT3
     
+    LATITUDE 5290: LATITUDE 5290
+    LATITUDE 5290 2-IN-1: LATITUDE 5290
     
     INSPIRON XPS-13: XPS L321X
     DELL SYSTEM XPS L321X: XPS L321X
@@ -454,6 +508,16 @@ model:
     XPS 15 9530: XPS L521X
     XPS 15 9550: XPS L521X
     
+    XPS 15 9570: XPS 15 9570
+    XPS 15": XPS 15 9570
+    XPS DESKTOP: XPS 8700
+    XPS 8700: XPS 8700
+    XPS 13: XPS L322X
+    XPS 13 9365: XPS L322X
+    XPS 13": XPS L322X
+    XPS 15 9560: XPS L521X
+    XPS 15 9560: XPS L521X
+    
     SURFACE WITH WINDOWS 8 PRO: Surface
     SURFACE PRO125GB: Surface
     SURFACE PRO 125GB: Surface
@@ -471,6 +535,19 @@ model:
     SURFACE BOOK I7: Surface Book
     SURFACE BOOK I7 512GB: Surface Book
     SURFACE BOOK I7 256GB: Surface Book
+    SUREFACE BOOK 2 15": Surface Book
+    SURFACE BOOK I5 256GB: Surface Book
+    SURFACE BOOK 2: Surface Book
+    SURFACE PRO 12.3: Surface Pro
+    SURFACE PRO 12.3" I5: Surface Pro
+    SURFACE PRO 5: Surface Pro
+    SURFACE PRO I5: Surface Pro
+    
+    TELEPRESENCE SX80: TelePresence SX80
+    SX80: TelePresence SX80
+    
+    EMBEDDED BOX PC 5000: Embedded Box PC 5000
+    DELL EMBEDDED 5000: Embedded Box PC 5000
     
   
     MACBOOKAIR5,2: Macbook Air 13"
@@ -483,6 +560,7 @@ model:
     MACBOOK AIR (13-INCH MID 2013): Macbook Air 13"
     MACBOOK AIR (13-INCH EARLY 2015): Macbook Air 13"
     MACBOOK AIR (LATE 2010): Macbook Air 13"
+    MACBOOK AIR (RETINA13-INCH2018): Macbook Air 13"
     
     MACBOOK AIR: Macbook Air
     
@@ -507,6 +585,15 @@ model:
     15-INCH RETINA MACBOOK PRO (MID 2015): Macbook Pro 15"
     15-INCH RETINA MACBOOK PRO WITH TOUCHID (LATE 2016): Macbook Pro 15"
     15-INCH RETINA MACBOOK PRO WITH TOUCHID (MID 2017): Macbook Pro 15"
+    MACBOOK PRO (15-INCH, 2018): Macbook Pro 15"
+    MACBOOK PRO (15-INCH, 2019): Macbook Pro 15"
+    MACBOOK PRO (15-INCH2018): Macbook Pro 15"
+    MACBOOK PRO 15" 2.2GHZ I7: Macbook Pro 15"
+    MACBOOK PRO 15" 2.3GHZ 512GB: Macbook Pro 15"
+    MACBOOK PRO 15" 2.6GHZ: Macbook Pro 15"
+    MACBOOK PRO 15" 2.6GHZ I7 256G: Macbook Pro 15"
+    MACBOOK PRO 15" 2.9GHZ 1TB I9: Macbook Pro 15"
+    MACBOOK PRO 15" I9: Macbook Pro 15"
     
     MACBOOKPRO10,2: Macbook Pro
     MACBOOKPRO5,3: Macbook Pro
@@ -534,6 +621,15 @@ model:
     MACBOOK PRO13: Macbook Pro 13"
     MACBOOK PRO13": Macbook Pro 13"
     MACBOOK PRO 13": Macbook Pro 13"
+    13-INCH RETINA MACBOOK PRO (LATE 2016): Macbook Pro 13"
+    MACBOOK  PRO13": Macbook Pro 13"
+    13-INCH RETINA MACBOOK PRO (LATE 2016): Macbook Pro 13"
+    MACBOOK PRO (13-INCH, 2018): Macbook Pro 13"
+    MACBOOK PRO (13-INCH2018): Macbook Pro 13"
+    MACBOOK PRO 13" 2.7GHZ: Macbook Pro 13"
+    MACBOOK PRO 13" 2.5GHZ I7: Macbook Pro 13"
+    MACBOOK PRO 13" 2.7GHZ: Macbook Pro 13"
+    MACBOOK PRO 13" 2.7GHZ I7: Macbook Pro 13"
     
     MACBOOK (12-INCH RETINA MID 2017): Macbook Pro 12"
     MACBOOK PRO 12": Macbook Pro 12"
@@ -565,6 +661,11 @@ model:
     IMAC INTEL (27-INCH, MID 2011): iMac 27"
     IMAC INTEL (27-INCH, LATE 2012): iMac 27"
     IMAC INTEL (27-INCH, LATE 2013): iMac 27"
+    A1207: iMac 21"
+    IMAC INTEL (21.5-INCH, MID 2017): iMac 21"
+    IMAC PRO INTEL (RETINA 5K27-INCHLATE 2017): iMac 27"
+    IMAC 27" 5K 3.8GHZ I5: iMac 27"
+    IMAC PRO 27": iMac 27"
     
 
     MACPRO (EARLY 2009): Mac Pro
@@ -620,6 +721,10 @@ model:
     367927U: Thinkpad Tablet 2
     THINKPAD TABLET 2: Thinkpad Tablet 2
     
+    THINKPAD X260: Thinkpad X260
+    THINKPAD I7: Thinkpad X260
+    20BSCTO1WW: Thinkpad X1 Carbon
+    
     KJ379AA-ABA A6400F: Pavilion F
     A6400F PAVILION: Pavilion 6400F
     
@@ -634,6 +739,8 @@ model:
     BIGIP LTM 1600: BIG-IP LTM 1600
     BIG-IP 1600: BIG-IP LTM 1600
     F5-BIG-LTM-2000S: BIG-IP 2000
+    F5-BIG-LTM-I5800: BIG-IP LTM I5800
+    I5800: BIG-IP LTM I5800
       
     CATALYST 6509-NEB-A: WS-C6509-NEB-A
     WS-C6509-NEB-A: WS-C6509-NEB-A
@@ -742,6 +849,8 @@ model:
     7148SX: DCS-7148SX
 
     OPENSTACK NOVA: KVM
+    OPEN STACK NODE: KVM
+   
     
     TO BE FILLED BY O.E.M.: null
     CUSTOM: null
