@@ -885,6 +885,7 @@ manufacturer:
     APPLE: Apple
     APPLE INC.: Apple
     APPLE COMPUTER CO: Apple
+    APPLE COMPUTER: Apple
     HONEYWELL: Honeywell
     DIGI INTERNATIONAL: Digi
     LENOVO: Lenovo
@@ -892,6 +893,7 @@ manufacturer:
     AMAX: Supermicro
     SUPERMICRO: Supermicro
     SUPER MICRO COMPUTER: Supermicro
+    COLFAX: Supermicro
     BROCADE COMMUNICATIONS: Brocade
     BROCADE: Brocade
     CANON: Canon
